@@ -185,7 +185,8 @@
     border-radius:14px;
     padding:22px 24px;
     box-shadow:var(--shadow);
-    margin-bottom:40px;
+    margin-bottom:32px;
+    scroll-margin-top:120px;
   }
   .signal-panel .label{
     font-family:"IBM Plex Mono";
@@ -217,7 +218,7 @@
   .signal-list p{margin:0;font-size:15.5px;}
   .signal-list b{font-weight:600;}
 
-  section.category{margin-bottom:48px;}
+  section.category{margin-bottom:48px;scroll-margin-top:120px;}
   .cat-head{
     display:flex;
     align-items:center;
@@ -314,7 +315,8 @@
     border:1px solid var(--accent);
     border-radius:14px;
     padding:26px clamp(20px,4vw,32px);
-    margin-top:8px;
+    margin-bottom:32px;
+    scroll-margin-top:120px;
   }
   .synthesis .label{
     font-family:"IBM Plex Mono";
@@ -329,6 +331,17 @@
     font-size:26px;
     margin-bottom:18px;
     color:var(--ink);
+  }
+  .synthesis h3.sub{
+    font-family:"IBM Plex Mono";
+    font-size:13px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--accent-ink);
+    margin:32px 0 16px;
+    padding-top:20px;
+    border-top:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
   }
   .moves{
     list-style:none;
@@ -359,6 +372,99 @@
     color:var(--ink);
   }
   .moves p{margin:0;font-size:15px;color:var(--ink-dim);}
+
+  .themes{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .themes li{
+    background:var(--surface);
+    border:1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .themes .theme-tag{
+    display:inline-block;
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    margin-bottom:6px;
+  }
+  .themes p{margin:0;font-size:14.5px;color:var(--ink-dim);}
+  .themes p b{color:var(--ink);font-weight:600;}
+
+  .leadership{margin-bottom:48px;scroll-margin-top:120px;}
+  .leadership .intro{
+    font-size:15.5px;
+    color:var(--ink-dim);
+    max-width:70ch;
+    margin:0 0 20px;
+  }
+  .leader-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:16px;
+    margin-bottom:20px;
+  }
+  .leader-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .leader-card .who{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+  }
+  .leader-card h3{font-size:17px;font-weight:600;font-style:normal;}
+  .leader-card .role{
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .leader-card .stance{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+  }
+  .leader-card blockquote{
+    margin:0;
+    font-family:"Newsreader";
+    font-style:italic;
+    font-size:15.5px;
+    color:var(--ink);
+    border-left:2px solid var(--border);
+    padding-left:12px;
+  }
+  .leader-card .signal{margin:0;font-size:13.5px;color:var(--ink-dim);}
+  .umesh-card{
+    background:var(--accent-soft);
+    border:1.5px solid var(--accent);
+    border-radius:12px;
+    padding:20px 22px;
+  }
+  .umesh-card .card-meta{color:var(--accent-ink);}
+  .umesh-card h3{font-size:19px;margin-bottom:8px;}
+  .umesh-card p{margin:0;font-size:15px;color:var(--ink);}
 
   footer{
     max-width:920px;
@@ -399,7 +505,7 @@
   }
 
   @media (prefers-reduced-motion:no-preference){
-    .card, .navbar a{transition:box-shadow .15s ease, border-color .15s ease;}
+    .card, .navbar a, .leader-card{transition:box-shadow .15s ease, border-color .15s ease;}
   }
 </style>
 
@@ -411,11 +517,13 @@
     </div>
     <div class="meta-line">
       Edition <strong>Mon, Sep 7 2026</strong><br>
-      Compiled <strong>4:20 PM PT</strong> · next edition tomorrow 6:40 AM PT
+      Compiled <strong>4:55 PM PT</strong> · next edition tomorrow 6:40 AM PT
     </div>
   </div>
   <nav class="navbar">
     <a href="#signal">Today's Signal</a>
+    <a href="#synthesis">Recommended Moves</a>
+    <a href="#leadership">CEO Signals</a>
     <a href="#competitors">CX Competitors</a>
     <a href="#hyperscalers">Hyperscaler Deploy-Cos</a>
     <a href="#frontier">Frontier Labs &amp; Research</a>
@@ -424,7 +532,6 @@
     <a href="#models">Model Platforms &amp; Inference</a>
     <a href="#china">Chinese Labs</a>
     <a href="#investors">Investors &amp; Capital</a>
-    <a href="#synthesis">Recommended Moves</a>
   </nav>
 </div>
 
@@ -440,7 +547,7 @@
         <p><b>Cloud exclusivity is dissolving.</b> OpenAI's models now run on Amazon Bedrock, one day after its Microsoft exclusivity ended, and Anthropic already spans AWS and Google. "Which cloud" no longer determines "which model" — deployment is multi-cloud by default now.</p>
       </li>
       <li><span class="dot" style="background:var(--cat-infra)"></span>
-        <p><b>Infrastructure consolidation just got personal.</b> Nvidia's ~$13-14B move to acquire Hugging Face pulls the largest open-model hub inside the largest chipmaker, days after Nvidia set up a $500B financing pool to help its own customers buy more of its chips.</p>
+        <p><b>Infrastructure consolidation just got personal.</b> Nvidia's ~$13B move to acquire Hugging Face pulls the largest open-model hub inside the largest chipmaker, days after Nvidia set up a $500B financing pool to help its own customers buy more of its chips.</p>
       </li>
       <li><span class="dot" style="background:var(--cat-china)"></span>
         <p><b>Frontier-adjacent capability keeps getting cheaper and more open.</b> Moonshot's open-weight Kimi K3 claims to beat GPT-5.6 and Claude Opus 4.8 on benchmarks, and Qwen is iterating flagship pricing and releases nearly weekly.</p>
@@ -451,11 +558,113 @@
     </ul>
   </section>
 
+  <section class="synthesis" id="synthesis">
+    <span class="label">Synthesis</span>
+    <h2>Recommended moves this week</h2>
+    <ol class="moves">
+      <li><span class="move-num">1</span>
+        <div><h4>Lead with the GSI story against consolidation</h4>
+        <p>Give the Tech Mahindra "Agentic AI Factory" partnership more weight in competitive decks now that NICE and the Salesforce/ServiceNow–Genesys tie-up have platform-level capital behind them. Pursue at least one additional GSI relationship to widen distribution the way Tech Mahindra does.</p></div>
+      </li>
+      <li><span class="move-num">2</span>
+        <div><h4>Make MCP support a visible differentiator, not a backend detail</h4>
+        <p>As Bedrock AgentCore and Gemini Enterprise commoditize the orchestration layer, Uniphore's defensible position is being the model- and cloud-agnostic layer above them. Put Linux-Foundation-governed MCP support into technical marketing explicitly.</p></div>
+      </li>
+      <li><span class="move-num">3</span>
+        <div><h4>Reframe the pitch around "any model, any cloud"</h4>
+        <p>OpenAI now runs on Bedrock, Anthropic spans AWS and Google, and Chinese open models keep getting cheaper and more capable — competing on foundation-model access is a losing game. Win on voice-specific tuning, compliance workflows, and orchestration instead, and evaluate partnering with an inference-routing layer (OpenRouter/Fireworks/Together-style) rather than building multi-model routing in-house.</p></div>
+      </li>
+      <li><span class="move-num">4</span>
+        <div><h4>Re-benchmark compute sourcing against a consolidating Nvidia stack</h4>
+        <p>With Nvidia acquiring Hugging Face and building a $500B customer financing pool, and Nebius/Lambda still undercutting on neocloud pricing, decide deliberately whether to lean into Nvidia's ecosystem or diversify compute sourcing before renewing any commitment.</p></div>
+      </li>
+      <li><span class="move-num">5</span>
+        <div><h4>Treat Databricks/Palantir/Snowflake/Glean as the new system of record</h4>
+        <p>These platforms are becoming the default enterprise "AI system of record" layer for the accounts Uniphore sells into. Prioritize clean, well-documented integration paths into each rather than positioning Uniphore as a competing platform.</p></div>
+      </li>
+    </ol>
+
+    <h3 class="sub">Key themes &amp; hot topics on the horizon</h3>
+    <ul class="themes">
+      <li>
+        <span class="theme-tag">Multi-cloud normalization</span>
+        <p><b>Foundation-model choice is becoming a commodity decision, not a strategic one.</b> With OpenAI now on Bedrock and Anthropic spanning AWS and Google, expect prospects to stop asking "which model" and start asking "what do you do that the model alone doesn't" — the question Uniphore needs a sharper answer to every quarter.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Vertical stack consolidation</span>
+        <p><b>Every layer is buying the layer next to it at once.</b> Chips are absorbing model hubs (Nvidia–Hugging Face), CX platforms are absorbing AI vendors (NICE–Cognigy), and data platforms are allying with agent platforms (Databricks–Palantir–Snowflake). Watch for a similar consolidation move aimed at Uniphore's own layer next.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Falling capability floor</span>
+        <p><b>Open-weight models — Chinese (Kimi K3, Qwen) and now U.S. (Reflection AI) — are compressing the price/performance gap fast.</b> Expect continued downward pressure on what customers are willing to pay for foundation-model access, which raises the stakes on Uniphore differentiating above the model layer.</p>
+      </li>
+      <li>
+        <span class="theme-tag">CEOs are publicly splitting on regulation</span>
+        <p><b>Amodei is calling for government power to block risky deployments, Karp is calling the industry "effing insane" for exploiting customers, and Huang is warning G20 leaders against overregulation.</b> This is no longer background noise — a real policy fight is forming that could reshape deployment rules and procurement requirements within the next year.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Capital abundance, not scarcity</span>
+        <p><b>VC mega-funds, Nvidia's $500B financing pool, and sovereign wealth (Prosperity7) are all deploying directly into AI at once.</b> Don't expect a funding slowdown to thin out the competitive field — plan for continued well-capitalized entrants at every layer.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="leadership" id="leadership">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--accent-soft);color:var(--accent-ink)">CEO Signals</span>
+      <h2>What the loudest voices in AI are standing for right now</h2>
+    </div>
+    <p class="intro">Five CEOs are setting the public tone for enterprise AI. Their stances cluster into two lanes — frontier-capability showmanship, and skeptical enterprise realism — with real disagreement between them on regulation, safety, and who's actually delivering value. Where Umesh positions Uniphore's voice matters as much as the product roadmap.</p>
+
+    <div class="leader-grid">
+      <div class="leader-card">
+        <div class="who"><h3>Jensen Huang</h3><span class="role">Nvidia · CEO</span></div>
+        <span class="stance">Stance: Capability showman, anti-overregulation</span>
+        <blockquote>"AGI has arrived."</blockquote>
+        <p class="signal">Posted Sept 7 crediting GPT-6 Astra's training run to 100,000+ Nvidia Grace Blackwell GPUs. At the G20 Innovation Summit (Sept 3) he warned leaders that the "single worst outcome" for any country is being left behind in AI, and defended open-source AI as strengthening safety and innovation.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Sam Altman</h3><span class="role">OpenAI · CEO</span></div>
+        <span class="stance">Stance: Evangelist, newly cautious on pacing</span>
+        <blockquote>"The tech industry has done a terrible job of communicating the benefits of AI."</blockquote>
+        <p class="signal">Launched GPT-6 Astra Sept 3 calling it a "new capability level," while also signaling next models will be "sobering" after an August safety pause — pairing boom-time optimism with a new safety-paced release cadence.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Dario Amodei</h3><span class="role">Anthropic · CEO</span></div>
+        <span class="stance">Stance: Regulation advocate, self-critical</span>
+        <blockquote>"By far the most accurate criticism of AI companies including Anthropic is that we haven't yet delivered on our big promises."</blockquote>
+        <p class="signal">Has called for government authority to block risky model deployments, while touting Anthropic as the fastest-growing software company in history (revenue $1B→$7B run rate in nine months). Not opposed to open-weight models, but explicitly fears authoritarian misuse.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Ali Ghodsi</h3><span class="role">Databricks · CEO</span></div>
+        <span class="stance">Stance: Bullish on capability, patient on IPO</span>
+        <blockquote>AGI has "already arrived" — at a $190B valuation.</blockquote>
+        <p class="signal">Confident, capability-forward messaging paired with a deliberately unhurried IPO stance — watching September's Arm/Instacart listings but explicitly not rushing to be a "first mover" into the public markets himself.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Alex Karp</h3><span class="role">Palantir · CEO</span></div>
+        <span class="stance">Stance: Combative frontier-lab skeptic</span>
+        <blockquote>The AI industry is "effing insane" — overcharging and exploiting customer data.</blockquote>
+        <p class="signal">Says enterprise buyers are "unhappy" with frontier AI labs, warns AI will redefine power and war, and is fighting European "digital sovereignty" restrictions he calls counterproductive — positioning Palantir as the trustworthy enterprise alternative to hype.</p>
+      </div>
+    </div>
+
+    <div class="umesh-card">
+      <div class="card-meta">Summary for Umesh</div>
+      <h3>The open lane isn't hype or attack — it's proof</h3>
+      <p>Huang and Altman are selling capability and inevitability; Karp and, more quietly, Amodei are selling skepticism of the industry's own promises. Ghodsi sits in between: bold claims, cautious moves. Umesh's most differentiated lane is neither — it's operator credibility. Uniphore already has what the frontier labs are still promising: ~2,500 enterprise customers, approaching $1B in bookings, ~100% YoY growth, and patented technology in production, not in a keynote. The recommended public stance: "sovereign, open, and already delivering measurable outcomes at enterprise scale" — a direct, receipts-first contrast to both the hype cycle and the frontier-lab backlash. Pick one recurring stage he already has (Davos/WEF, Milken) and anchor a consistent, repeatable claim there every time: outcomes over hype.</p>
+    </div>
+  </section>
+
   <section class="category" id="competitors">
     <div class="cat-head">
       <span class="cat-pill" style="background:var(--cat-competitor-soft);color:var(--cat-competitor)">CX &amp; Conversational AI</span>
       <h2>Direct competitors</h2>
-      <span class="cat-count">5 items</span>
+      <span class="cat-count">7 items</span>
     </div>
     <div class="cards">
 
@@ -492,6 +701,20 @@
         <h3>Lower-cost entrants are showing up in buyer research</h3>
         <p class="dek">Comparison sites now surface Level AI (pricing Uniphore's conversational AI publicly at $35/agent) and Tars (950+ pre-built drag-and-drop templates) as lower-friction alternatives during vendor shortlisting.</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Public price-anchoring by smaller competitors is starting to shape early-stage buyer conversations. Equip sales with a clear value-per-agent framing before prospects arrive with a Level AI price point already in mind.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Emerging competitor · Kutu AI, Ankara, Turkey</div>
+        <h3>Kutu AI: a small but pointed customer-feedback specialist</h3>
+        <p class="dek">Kutu AI (kutu.ai), founded 2020 in Ankara, continuously collects and analyzes customer conversations across channels and languages, turning feedback into quantified, actionable insight for CX and support teams. It's a lean operation — around 3 employees, backed by Albaraka Garaj — competing on focus rather than scale.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Narrow feedback-analytics specialists like this show how thin a wedge can still win a deal. Watch whether point solutions like Kutu get bundled into a larger platform RFP and undercut a broader Uniphore proposal on a specific line item, rather than competing head-on.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Emerging competitor · identity not fully confirmed</div>
+        <h3>Cognito AI Solutions: AI call-answering for small business</h3>
+        <p class="dek">Assuming this refers to Cognito AI Solutions, which helps small professional-services firms answer calls, follow up with customers, and automate routine tasks with AI. Several similarly named companies exist (a compliance/anti-fraud "Cognito," KognitoAI, Cognitivo) — flag if a different one was intended.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>If confirmed, this sits at the small-business end of conversational AI — a different buyer than Uniphore's enterprise focus, but a useful signal of how commoditized basic AI call-handling has become at the low end of the market.</p></div>
       </div>
 
     </div>
@@ -560,8 +783,8 @@
 
       <div class="card">
         <div class="card-meta">Product · OpenAI</div>
-        <h3>OpenAI rolls out "Astra" after flagging advanced cyber capabilities</h3>
-        <p class="dek">OpenAI is rolling out its Astra model after warning of the model's advanced cyber capabilities, part of a broader pattern of frontier labs pairing new capability tiers with more explicit safety disclosures.</p>
+        <h3>OpenAI rolls out Astra, and Altman signals a more cautious pace ahead</h3>
+        <p class="dek">GPT-6 Astra launched Sept 3 after warnings about its advanced cyber capabilities. Altman called it a "new capability level" but also said the industry has communicated AI's benefits poorly, and signaled future models will be "sobering" after an August safety pause.</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Capability jumps at the frontier tend to cascade into packaged enterprise tooling within a couple of quarters. Watch whether Astra-class capability shows up in an off-the-shelf agent or CX product that becomes a direct competitive input.</p></div>
       </div>
 
@@ -599,7 +822,7 @@
     <div class="cat-head">
       <span class="cat-pill" style="background:var(--cat-enterprise-soft);color:var(--cat-enterprise)">Enterprise AI Platforms</span>
       <h2>Databricks · Palantir · Snowflake · Glean</h2>
-      <span class="cat-count">4 items</span>
+      <span class="cat-count">3 items</span>
     </div>
     <div class="cards">
 
@@ -624,12 +847,6 @@
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Glean is becoming a default enterprise "AI work assistant" layer the way Salesforce is for CRM. Track whether Glean-style enterprise search/assistant tools start absorbing budget that would otherwise go to CX-specific AI tooling.</p></div>
       </div>
 
-      <div class="card pending">
-        <div class="card-meta">Needs input · Unresolved</div>
-        <h3>"Cognitos" — company not confirmed</h3>
-        <p class="dek">No confident match found. The closest fuzzy hits (Kognitos, an agentic process-automation startup; Cognitivo.ai) don't have a confirmed connection to the intended name, and neither Dan nor Sandra could confirm the target company. Flagged for follow-up — let us know the exact company or domain and this section will start tracking it.</p>
-      </div>
-
     </div>
   </section>
 
@@ -643,15 +860,15 @@
 
       <div class="card">
         <div class="card-meta">Acquisition · Nvidia / Hugging Face</div>
-        <h3>Nvidia moves to acquire Hugging Face for roughly $13–14B</h3>
-        <p class="dek">The deal pulls the largest open-model hub — 18M+ developers, 3M+ models, 200,000 enterprise customers — inside the world's dominant AI chipmaker, extending Nvidia's reach from silicon into the open-model ecosystem itself.</p>
+        <h3>Nvidia moves to acquire Hugging Face for roughly $13B</h3>
+        <p class="dek">The deal pulls the largest open-model hub — 18M+ developers, 3M+ models, 200,000 enterprise customers — inside the world's dominant AI chipmaker. Huang told CNBC (Sept 3) that Hugging Face approached him weeks ahead of the deal, and framed it as expanding "access to AI for developers and institutions worldwide."</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>If Nvidia becomes both the compute layer and the open-model distribution layer, that's leverage worth watching closely for pricing and access terms on any open models Uniphore's stack depends on. Reassess exposure to Hugging Face-hosted models now that a single chipmaker owns the hub.</p></div>
       </div>
 
       <div class="card">
         <div class="card-meta">Financing · Nvidia</div>
         <h3>Nvidia sets up a $500B financing pool for its own customers</h3>
-        <p class="dek">Nvidia and six financial partners are creating a $500B investment pool to help frontier AI labs, AI clouds, and other enterprise customers buy Nvidia chips on credit.</p>
+        <p class="dek">Nvidia and six financial partners are creating a $500B investment pool to help frontier AI labs, AI clouds, and other enterprise customers buy Nvidia chips on credit. Huang has since declared "AGI has arrived," tying the claim directly to Nvidia hardware powering GPT-6 Astra's training run.</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>This financing structure is designed to keep customers inside Nvidia's ecosystem rather than shopping neocloud alternatives. Worth understanding before committing to any Nvidia-adjacent financing arrangement for Uniphore's own compute roadmap.</p></div>
       </div>
 
@@ -697,7 +914,7 @@
       <div class="card">
         <div class="card-meta">Acquisition · Nvidia / Hugging Face</div>
         <h3>Hugging Face's model hub moves inside Nvidia</h3>
-        <p class="dek">Nvidia's ~$13-14B acquisition brings Hugging Face's 3M+ models and 18M+ developer community under a chipmaker's ownership for the first time at this scale — a different implication than the infrastructure angle above: it's now a single company controlling both a dominant compute layer and a dominant open-model distribution layer.</p>
+        <p class="dek">Nvidia's ~$13B acquisition brings Hugging Face's 3M+ models and 18M+ developer community under a chipmaker's ownership for the first time at this scale — a different implication than the infrastructure angle above: it's now a single company controlling both a dominant compute layer and a dominant open-model distribution layer.</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Any open-source model Uniphore sources via Hugging Face is now one acquisition away from different terms of access. Worth a quick internal audit of which models and pipelines currently depend on Hugging Face distribution.</p></div>
       </div>
 
@@ -768,7 +985,7 @@
     <div class="cat-head">
       <span class="cat-pill" style="background:var(--cat-investor-soft);color:var(--cat-investor)">Investors &amp; Capital</span>
       <h2>a16z · NEA · Thrive · Valor · Prosperity7</h2>
-      <span class="cat-count">6 items</span>
+      <span class="cat-count">5 items</span>
     </div>
     <div class="cards">
 
@@ -807,40 +1024,7 @@
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Sovereign and strategic capital entering AI at the Series A stage signals long-horizon, non-traditional funding sources are now in play for AI startups generally — worth keeping on the radar for future partnership or investment conversations, not just as competitive signal.</p></div>
       </div>
 
-      <div class="card pending">
-        <div class="card-meta">Needs input · Unresolved</div>
-        <h3>"Kotu" — fund not confirmed</h3>
-        <p class="dek">No confident match found. A "Kotu Venture Capital" surfaced in South Africa but doesn't appear to be an AI-focused fund, and neither Dan nor Sandra could confirm the intended name. Flagged for follow-up — let us know the exact fund and this section will start tracking it.</p>
-      </div>
-
     </div>
-  </section>
-
-  <section class="synthesis" id="synthesis">
-    <span class="label">Synthesis</span>
-    <h2>Recommended moves this week</h2>
-    <ol class="moves">
-      <li><span class="move-num">1</span>
-        <div><h4>Lead with the GSI story against consolidation</h4>
-        <p>Give the Tech Mahindra "Agentic AI Factory" partnership more weight in competitive decks now that NICE and the Salesforce/ServiceNow–Genesys tie-up have platform-level capital behind them. Pursue at least one additional GSI relationship to widen distribution the way Tech Mahindra does.</p></div>
-      </li>
-      <li><span class="move-num">2</span>
-        <div><h4>Make MCP support a visible differentiator, not a backend detail</h4>
-        <p>As Bedrock AgentCore and Gemini Enterprise commoditize the orchestration layer, Uniphore's defensible position is being the model- and cloud-agnostic layer above them. Put Linux-Foundation-governed MCP support into technical marketing explicitly.</p></div>
-      </li>
-      <li><span class="move-num">3</span>
-        <div><h4>Reframe the pitch around "any model, any cloud"</h4>
-        <p>OpenAI now runs on Bedrock, Anthropic spans AWS and Google, and Chinese open models keep getting cheaper and more capable — competing on foundation-model access is a losing game. Win on voice-specific tuning, compliance workflows, and orchestration instead, and evaluate partnering with an inference-routing layer (OpenRouter/Fireworks/Together-style) rather than building multi-model routing in-house.</p></div>
-      </li>
-      <li><span class="move-num">4</span>
-        <div><h4>Re-benchmark compute sourcing against a consolidating Nvidia stack</h4>
-        <p>With Nvidia acquiring Hugging Face and building a $500B customer financing pool, and Nebius/Lambda still undercutting on neocloud pricing, decide deliberately whether to lean into Nvidia's ecosystem or diversify compute sourcing before renewing any commitment.</p></div>
-      </li>
-      <li><span class="move-num">5</span>
-        <div><h4>Treat Databricks/Palantir/Snowflake/Glean as the new system of record</h4>
-        <p>These platforms are becoming the default enterprise "AI system of record" layer for the accounts Uniphore sells into. Prioritize clean, well-documented integration paths into each rather than positioning Uniphore as a competing platform.</p></div>
-      </li>
-    </ol>
   </section>
 
 </main>
@@ -851,12 +1035,16 @@
     <ul>
       <li><a href="https://www.tipranks.com/news/private-companies/uniphore-highlighted-in-forrester-evaluation-of-conversational-ai-platforms">Uniphore Highlighted in Forrester Evaluation — TipRanks</a></li>
       <li><a href="https://www.businesswire.com/news/home/20260128149689/en">Uniphore / Tech Mahindra announcement — Businesswire</a></li>
-      <li><a href="https://cresta.com/guides/best-verint-alternatives">Verint alternatives guide — Cresta</a></li>
+      <li><a href="https://www.cresta.com/guides/best-verint-alternatives">Verint alternatives guide — Cresta</a></li>
       <li><a href="https://www.inflectioncx.com/intelligence/guides/ccaas-market-guide-2026">CCaaS Market Guide 2026 — InflectionCX</a></li>
+      <li><a href="https://www.kutu.ai/">Kutu AI — company site</a></li>
+      <li><a href="https://www.cognaai.com/">Cognito AI Solutions — company site</a></li>
       <li><a href="https://thenewstack.io/openai-aws-bedrock-integration/">The OpenAI–Microsoft reset, decoded — The New Stack</a></li>
       <li><a href="https://www.geekwire.com/2026/openais-models-land-on-amazon-bedrock-one-day-after-microsoft-exclusivity-ends/">OpenAI lands on Amazon Bedrock — GeekWire</a></li>
       <li><a href="https://www.constellationr.com/insights/news/google-cloud-aws-microsoft-azure-ai-vertical-integration-race">AI vertical integration race — Constellation Research</a></li>
       <li><a href="https://dealroom.co/news/147131-openai-reboots-as-anthropic-pulls-ahead-with-ipo-planned-for-september/">Anthropic IPO speculation — Dealroom</a></li>
+      <li><a href="https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html">OpenAI's Astra rollout — CNBC</a></li>
+      <li><a href="https://tech-insider.org/altman-next-ai-models-sobering-openai-pause-2026/">Altman on "sobering" next models — Tech Insider</a></li>
       <li><a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html">Google DeepMind's new boss — CNBC</a></li>
       <li><a href="https://techcrunch.com/2025/10/09/reflection-raises-2b-to-be-americas-open-frontier-ai-lab-challenging-deepseek">Reflection AI raises $2B — TechCrunch</a></li>
       <li><a href="https://aifund.ai/team-member/andrew-ng/">Andrew Ng — AI Fund</a></li>
@@ -864,6 +1052,8 @@
       <li><a href="https://www.snowflake.com/en/news/press-releases/snowflake-palantir-announce-strategic-partnership-for-enterprise-ready-ai-analytics/">Snowflake &amp; Palantir partnership — Snowflake</a></li>
       <li><a href="https://www.glean.com/press/glean-raises-150m-series-f-at-7-2b-valuation-to-accelerate-enterprise-ai-agent-innovation-globally">Glean funding &amp; ARR — Glean Press</a></li>
       <li><a href="https://www.cnn.com/2026/09/03/tech/nvidia-hugging-face-ai-acquisition">Nvidia's Hugging Face acquisition — CNN Business</a></li>
+      <li><a href="https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html">Huang on Hugging Face deal — CNBC</a></li>
+      <li><a href="https://www.benzinga.com/markets/tech/26/09/61594003/nvidia-jensen-huang-single-worst-outcome-country-left-behind-ai-regulation-theoretical-harm">Huang at G20 Innovation Summit — Benzinga</a></li>
       <li><a href="https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/">Nvidia's $500B financing plan — TechCrunch</a></li>
       <li><a href="https://cryptopond.com/best-gpu-neoclouds-2026-coreweave-nebius-lambda-crusoe-and-groq-ranked-by-published-pricing-and-contracted-power/">Best GPU Neoclouds 2026 — Cryptopond</a></li>
       <li><a href="https://marketwise.com/investing/coreweaves-55-billion-backlog-marks-the-next-phase-of-the-neocloud-boom/">CoreWeave's $55B backlog — MarketWise</a></li>
@@ -875,7 +1065,11 @@
       <li><a href="https://www.citybiz.co/article/880988/nea-leads-19-million-investment-in-centralize-to-expand-ai-relationship-intelligence-platform/">NEA's AI investment activity — citybiz</a></li>
       <li><a href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/">Thrive Holdings raises $2B — TechCrunch</a></li>
       <li><a href="https://www.cbinsights.com/investor/prosperity7-ventures">Prosperity7 Ventures profile — CB Insights</a></li>
+      <li><a href="https://fortune.com/2026/08/18/david-sacks-says-anthropics-dario-amodei-wants-a-dmv-for-ai-but-plenty-of-industries-thrive-despite-safety-regulation/">Amodei defends his approach to regulation — Fortune</a></li>
+      <li><a href="https://www.cnbc.com/2026/06/10/palantir-karp-enterprise-ai.html">Karp: businesses "unhappy" with frontier labs — CNBC</a></li>
+      <li><a href="https://www.forbes.com/sites/tylerroush/2026/07/01/palantir-billionaire-alex-karp-calls-ai-industry-effing-insane-in-heated-interview/">Karp calls AI industry "effing insane" — Forbes</a></li>
+      <li><a href="https://www.uniphore.com/press-releases/ceo-and-co-founder-umesh-sachdev-named-ai-innovator-of-the-year/">Umesh Sachdev named AI Innovator of the Year — Uniphore</a></li>
     </ul>
   </div>
-  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. Two entries ("Cognitos" and "Kotu") could not be matched to a confirmed company or fund — send the exact name and they'll be added to tomorrow's tracking scope. "AI Research" is being held open pending scope from Will.</p>
+  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. "Cognito AI" could not be matched with full confidence to one specific company — send the exact domain or URL and it'll be corrected. "AI Research" is being held open pending scope from Will. CEO quotes are drawn from public reporting and should be verified against primary sources before external use.</p>
 </footer>
