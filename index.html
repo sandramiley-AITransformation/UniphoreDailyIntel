@@ -16,10 +16,18 @@
     --cat-competitor-soft:#F5DEE3;
     --cat-hyperscaler:#25567F;
     --cat-hyperscaler-soft:#DCE7F0;
-    --cat-neocloud:#1B6E5F;
-    --cat-neocloud-soft:#D9EBE6;
+    --cat-frontier:#5B3E99;
+    --cat-frontier-soft:#E7E0F5;
+    --cat-enterprise:#1B6E7D;
+    --cat-enterprise-soft:#D9EBEE;
+    --cat-infra:#1B6E5F;
+    --cat-infra-soft:#D9EBE6;
+    --cat-model:#4C6E1F;
+    --cat-model-soft:#E4EDD3;
     --cat-china:#A8571A;
     --cat-china-soft:#F3E1CD;
+    --cat-investor:#7A2F6E;
+    --cat-investor-soft:#F0DCEC;
     --shadow: 0 1px 2px rgba(18,26,40,0.04), 0 6px 20px -8px rgba(18,26,40,0.12);
   }
   @media (prefers-color-scheme: dark){
@@ -38,10 +46,18 @@
       --cat-competitor-soft:#3A1E26;
       --cat-hyperscaler:#7EAFDA;
       --cat-hyperscaler-soft:#1B2C3D;
-      --cat-neocloud:#5FC4AE;
-      --cat-neocloud-soft:#12302A;
+      --cat-frontier:#B79AE8;
+      --cat-frontier-soft:#2A2140;
+      --cat-enterprise:#6FC9D8;
+      --cat-enterprise-soft:#10262A;
+      --cat-infra:#5FC4AE;
+      --cat-infra-soft:#12302A;
+      --cat-model:#9FD35C;
+      --cat-model-soft:#223010;
       --cat-china:#E5985A;
       --cat-china-soft:#3A2515;
+      --cat-investor:#D98BC9;
+      --cat-investor-soft:#341129;
       --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
     }
   }
@@ -60,10 +76,18 @@
     --cat-competitor-soft:#3A1E26;
     --cat-hyperscaler:#7EAFDA;
     --cat-hyperscaler-soft:#1B2C3D;
-    --cat-neocloud:#5FC4AE;
-    --cat-neocloud-soft:#12302A;
+    --cat-frontier:#B79AE8;
+    --cat-frontier-soft:#2A2140;
+    --cat-enterprise:#6FC9D8;
+    --cat-enterprise-soft:#10262A;
+    --cat-infra:#5FC4AE;
+    --cat-infra-soft:#12302A;
+    --cat-model:#9FD35C;
+    --cat-model-soft:#223010;
     --cat-china:#E5985A;
     --cat-china-soft:#3A2515;
+    --cat-investor:#D98BC9;
+    --cat-investor-soft:#341129;
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
   }
 
@@ -200,6 +224,7 @@
     gap:12px;
     margin-bottom:18px;
     scroll-margin-top:120px;
+    flex-wrap:wrap;
   }
   .cat-pill{
     font-family:"IBM Plex Mono";
@@ -213,6 +238,13 @@
   .cat-head h2{
     font-size:24px;
     font-weight:500;
+  }
+  .cat-sub{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    width:100%;
+    margin-top:-10px;
   }
   .cat-count{
     font-family:"IBM Plex Mono";
@@ -267,6 +299,15 @@
     padding-top:1px;
   }
   .angle p{margin:0;font-size:14.5px;color:var(--ink);}
+
+  .card.pending{
+    background:transparent;
+    border:1.5px dashed var(--border);
+    box-shadow:none;
+  }
+  .card.pending .card-meta{color:var(--ink-faint);}
+  .card.pending h3{color:var(--ink-dim);font-style:italic;font-weight:500;}
+  .card.pending p.dek{margin-bottom:0;}
 
   .synthesis{
     background:var(--accent-soft);
@@ -354,7 +395,6 @@
 
   @media (max-width:600px){
     footer .sources ul{columns:1;}
-    .cat-head{flex-wrap:wrap;}
     .cat-count{margin-left:0;}
   }
 
@@ -371,15 +411,19 @@
     </div>
     <div class="meta-line">
       Edition <strong>Mon, Sep 7 2026</strong><br>
-      Compiled <strong>06:40 PT</strong> · next edition tomorrow
+      Compiled <strong>4:20 PM PT</strong> · next edition tomorrow 6:40 AM PT
     </div>
   </div>
   <nav class="navbar">
     <a href="#signal">Today's Signal</a>
-    <a href="#competitors">CX &amp; Conversational AI</a>
+    <a href="#competitors">CX Competitors</a>
     <a href="#hyperscalers">Hyperscaler Deploy-Cos</a>
-    <a href="#neoclouds">Neoclouds</a>
+    <a href="#frontier">Frontier Labs &amp; Research</a>
+    <a href="#enterprise">Enterprise AI Platforms</a>
+    <a href="#infra">Compute &amp; Infrastructure</a>
+    <a href="#models">Model Platforms &amp; Inference</a>
     <a href="#china">Chinese Labs</a>
+    <a href="#investors">Investors &amp; Capital</a>
     <a href="#synthesis">Recommended Moves</a>
   </nav>
 </div>
@@ -387,19 +431,22 @@
 <main>
 
   <section class="signal-panel" id="signal">
-    <span class="label">Today's Signal — four things worth knowing before your first meeting</span>
+    <span class="label">Today's Signal — five things worth knowing before your first meeting</span>
     <ul class="signal-list">
       <li><span class="dot" style="background:var(--cat-competitor)"></span>
         <p><b>Consolidation is squeezing the middle of the market.</b> NICE's $955M Cognigy buy and Salesforce/ServiceNow's $1.5B joint stake in Genesys mean two of Uniphore's platform rivals now have hyperscaler-adjacent balance sheets — differentiation, not feature parity, is the fight.</p>
       </li>
       <li><span class="dot" style="background:var(--cat-hyperscaler)"></span>
-        <p><b>The orchestration layer is being commoditized.</b> AWS Bedrock AgentCore is GA with 1M+ SDK downloads and Google has rebranded Vertex AI into a full "Gemini Enterprise Agent Platform" — the generic agent-building layer is becoming a hyperscaler freebie.</p>
+        <p><b>Cloud exclusivity is dissolving.</b> OpenAI's models now run on Amazon Bedrock, one day after its Microsoft exclusivity ended, and Anthropic already spans AWS and Google. "Which cloud" no longer determines "which model" — deployment is multi-cloud by default now.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-infra)"></span>
+        <p><b>Infrastructure consolidation just got personal.</b> Nvidia's ~$13-14B move to acquire Hugging Face pulls the largest open-model hub inside the largest chipmaker, days after Nvidia set up a $500B financing pool to help its own customers buy more of its chips.</p>
       </li>
       <li><span class="dot" style="background:var(--cat-china)"></span>
-        <p><b>Frontier-adjacent capability is getting radically cheaper.</b> Moonshot's Kimi K3 (2.8T params, 1M-token context) shipped open-source, and Qwen3-Max just cut its cheapest flagship tier to RMB 2.5/M input tokens — the cost floor for "good enough" language models keeps dropping.</p>
+        <p><b>Frontier-adjacent capability keeps getting cheaper and more open.</b> Moonshot's open-weight Kimi K3 claims to beat GPT-5.6 and Claude Opus 4.8 on benchmarks, and Qwen is iterating flagship pricing and releases nearly weekly.</p>
       </li>
-      <li><span class="dot" style="background:var(--cat-neocloud)"></span>
-        <p><b>Compute is also getting cheaper, just not from the usual suppliers.</b> Nebius grew revenue 454% YoY and just signed a multi-year deal to supply Microsoft's own Azure cloud with GPUs — neoclouds are now inside the hyperscaler supply chain, not just competing with it.</p>
+      <li><span class="dot" style="background:var(--cat-investor)"></span>
+        <p><b>Capital is piling into every layer of the stack at once.</b> a16z's growth fund is now $8.5B, NEA just wrote its first agentic-AI check, and Glean raised $768M for enterprise AI search — the competition for enterprise AI budget is intensifying from data platforms, agent platforms, and model platforms simultaneously.</p>
       </li>
     </ul>
   </section>
@@ -453,10 +500,17 @@
   <section class="category" id="hyperscalers">
     <div class="cat-head">
       <span class="cat-pill" style="background:var(--cat-hyperscaler-soft);color:var(--cat-hyperscaler)">Hyperscaler Deploy-Cos</span>
-      <h2>AWS · Microsoft · Google</h2>
-      <span class="cat-count">4 items</span>
+      <h2>AWS · Microsoft · Google — platforms &amp; deployment</h2>
+      <span class="cat-count">5 items</span>
     </div>
     <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Deployment shift · AWS / Microsoft / OpenAI / Anthropic</div>
+        <h3>OpenAI lands on Amazon Bedrock, one day after Microsoft exclusivity ends</h3>
+        <p class="dek">On April 28, 2026, AWS launched OpenAI's frontier models on Bedrock in limited preview — 24 hours after Microsoft and OpenAI formally ended their cloud exclusivity, freeing OpenAI to serve any cloud. Both OpenAI and Anthropic have now committed to running workloads on AWS's custom Trainium chips, and a deeper Microsoft–Anthropic tie-up (possibly involving Microsoft equity) is reportedly coming to bring Claude into Azure's primary model catalog.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>The "why not just use Bedrock or Azure directly" objection now also has to answer "and it runs whichever frontier model you want, on whichever cloud." Sharpen the pitch around voice-specific tuning, compliance workflows, and orchestration — the things a generic foundation-model API doesn't give a contact center.</p></div>
+      </div>
 
       <div class="card">
         <div class="card-meta">Platform GA · AWS</div>
@@ -489,13 +543,117 @@
     </div>
   </section>
 
-  <section class="category" id="neoclouds">
+  <section class="category" id="frontier">
     <div class="cat-head">
-      <span class="cat-pill" style="background:var(--cat-neocloud-soft);color:var(--cat-neocloud)">Neoclouds</span>
-      <h2>GPU infrastructure challengers</h2>
+      <span class="cat-pill" style="background:var(--cat-frontier-soft);color:var(--cat-frontier)">Frontier Labs &amp; Research</span>
+      <h2>OpenAI · Anthropic · DeepMind · new entrants</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Corporate structure · Dealroom</div>
+        <h3>Anthropic reportedly eyeing an IPO as early as September</h3>
+        <p class="dek">Coverage citing a $30B+ revenue run rate has floated an October IPO at a valuation around $800B, with reporting framing Anthropic as pulling ahead of OpenAI on momentum. Treat the valuation figure as speculative until Anthropic confirms filing plans.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A public Anthropic would face new disclosure requirements and likely accelerate enterprise/GSI investment to defend its growth story — worth tracking for early signal on Claude-specific investment in contact-center or CX tooling that could compete with or complement Uniphore.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Product · OpenAI</div>
+        <h3>OpenAI rolls out "Astra" after flagging advanced cyber capabilities</h3>
+        <p class="dek">OpenAI is rolling out its Astra model after warning of the model's advanced cyber capabilities, part of a broader pattern of frontier labs pairing new capability tiers with more explicit safety disclosures.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Capability jumps at the frontier tend to cascade into packaged enterprise tooling within a couple of quarters. Watch whether Astra-class capability shows up in an off-the-shelf agent or CX product that becomes a direct competitive input.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Leadership &amp; strategy · CNBC</div>
+        <h3>Google DeepMind's new boss inherits a race to catch up</h3>
+        <p class="dek">New DeepMind leadership (Koray Kavukcuoglu) faces pressure to close the gap with OpenAI and Anthropic after a difficult summer of high-profile departures and internal restructuring — though Google says it starts September with renewed AI momentum, including Gemini 3.8 Flash's focus on coding and agentic tasks.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A recovering-but-pressured DeepMind is exactly when Google tends to push harder on partner incentives — cloud credits, co-sell, aggressive Gemini Enterprise pricing. Watch for more aggressive Google GTM offers aimed at CX/agent workloads specifically.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">New entrant · Funding</div>
+        <h3>Reflection AI raised $2B to build an open U.S. frontier lab</h3>
+        <p class="dek">Reflection AI positions itself as an open alternative to closed U.S. labs, explicitly framed as a challenger to DeepSeek and other Chinese open-weight labs.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A well-funded, open U.S. lab gives enterprises wary of both closed-model lock-in and Chinese-origin open models a third option. Worth evaluating as a future model-choice partner for cost-sensitive or data-residency-sensitive workloads.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Venture studio · AI Fund</div>
+        <h3>Andrew Ng's AI Fund keeps seeding narrow AI-native startups</h3>
+        <p class="dek">AI Fund, Andrew Ng's venture studio, has raised $370M+ from Sequoia, NEA, SoftBank and others and co-founded roughly 35 portfolio companies to date — a build-alongside-founders model rather than a traditional check-writing fund.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>AI Fund's studio model is a leading indicator for narrow, well-capitalized AI-native startups across verticals, including CX-adjacent ones. Worth a periodic scan of its portfolio to catch adjacent-space competitors before they scale.</p></div>
+      </div>
+
+      <div class="card pending">
+        <div class="card-meta">Needs input · Flagged by Sandra</div>
+        <h3>"AI Research" — scope not yet defined</h3>
+        <p class="dek">This category was flagged for tracking but needs scope confirmation from Will before it can be researched meaningfully — e.g. specific labs, publications, or research themes to follow. Holding this as an open placeholder rather than guessing.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="enterprise">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-enterprise-soft);color:var(--cat-enterprise)">Enterprise AI Platforms</span>
+      <h2>Databricks · Palantir · Snowflake · Glean</h2>
       <span class="cat-count">4 items</span>
     </div>
     <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Partnership · Databricks / Palantir</div>
+        <h3>Databricks and Palantir deepen their product partnership</h3>
+        <p class="dek">The two companies are integrating Palantir's AI Platform (AIP) with Databricks' Data + AI Platform to speed up AI application delivery and cut total cost of ownership through shared real-time, AI-powered workflows.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Accounts running Databricks+Palantir together are building an internal "AI system of record." Uniphore's conversational data and insights should integrate cleanly into that layer rather than compete with it — check current integration depth with both.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Partnership · Snowflake / Palantir</div>
+        <h3>Snowflake ties its AI Data Cloud to Palantir Foundry</h3>
+        <p class="dek">The partnership gives bidirectional, zero-copy interoperability between Palantir Foundry/AIP and Snowflake Iceberg Tables. Snowflake also struck Q3 2026 partnerships with Workday, UiPath, and Splunk aimed at agent-to-agent collaboration across systems.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Snowflake is positioning itself as the neutral data layer multiple agent ecosystems plug into. A native Uniphore-to-Snowflake data path would let CX conversation data feed directly into whatever agent workflows a customer already runs on top.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Funding &amp; product · Glean</div>
+        <h3>Glean raises $768M as ARR triples to $300M</h3>
+        <p class="dek">Glean closed a $768M growth round on Aug 29, 2026, alongside a new "Glean Tau" desktop app, funding autonomous workflow capabilities and token-cost efficiencies. ARR tripled from $100M to $300M in 15 months, with claimed 30% inference-cost savings for enterprise customers.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Glean is becoming a default enterprise "AI work assistant" layer the way Salesforce is for CRM. Track whether Glean-style enterprise search/assistant tools start absorbing budget that would otherwise go to CX-specific AI tooling.</p></div>
+      </div>
+
+      <div class="card pending">
+        <div class="card-meta">Needs input · Unresolved</div>
+        <h3>"Cognitos" — company not confirmed</h3>
+        <p class="dek">No confident match found. The closest fuzzy hits (Kognitos, an agentic process-automation startup; Cognitivo.ai) don't have a confirmed connection to the intended name, and neither Dan nor Sandra could confirm the target company. Flagged for follow-up — let us know the exact company or domain and this section will start tracking it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="infra">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-infra-soft);color:var(--cat-infra)">Compute &amp; Infrastructure</span>
+      <h2>Nvidia · neoclouds</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Acquisition · Nvidia / Hugging Face</div>
+        <h3>Nvidia moves to acquire Hugging Face for roughly $13–14B</h3>
+        <p class="dek">The deal pulls the largest open-model hub — 18M+ developers, 3M+ models, 200,000 enterprise customers — inside the world's dominant AI chipmaker, extending Nvidia's reach from silicon into the open-model ecosystem itself.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>If Nvidia becomes both the compute layer and the open-model distribution layer, that's leverage worth watching closely for pricing and access terms on any open models Uniphore's stack depends on. Reassess exposure to Hugging Face-hosted models now that a single chipmaker owns the hub.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Financing · Nvidia</div>
+        <h3>Nvidia sets up a $500B financing pool for its own customers</h3>
+        <p class="dek">Nvidia and six financial partners are creating a $500B investment pool to help frontier AI labs, AI clouds, and other enterprise customers buy Nvidia chips on credit.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>This financing structure is designed to keep customers inside Nvidia's ecosystem rather than shopping neocloud alternatives. Worth understanding before committing to any Nvidia-adjacent financing arrangement for Uniphore's own compute roadmap.</p></div>
+      </div>
 
       <div class="card">
         <div class="card-meta">Earnings · CoreWeave</div>
@@ -518,11 +676,50 @@
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Sustained neocloud price competition is a margin tailwind for any compute-heavy real-time voice AI feature Uniphore wants to ship without raising customer pricing. Flag for the infra/procurement team as a benchmark, not just a headline.</p></div>
       </div>
 
+    </div>
+  </section>
+
+  <section class="category" id="models">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-model-soft);color:var(--cat-model)">Model Platforms &amp; Inference</span>
+      <h2>Together AI · Fireworks · OpenRouter · Arcee</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+    <div class="cards">
+
       <div class="card">
-        <div class="card-meta">Market framing · Industry analysis</div>
-        <h3>Neoclouds are being framed as the flexible, regional alternative</h3>
-        <p class="dek">Nscale, Civo, CoreWeave, Crusoe, Lambda, Nebius, and Vultr are increasingly described as GPU-as-a-Service specialists offering regional and performance-optimized alternatives to the big three hyperscalers.</p>
-        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Regional neocloud options may matter for data-residency-sensitive deployments in regulated industries Uniphore serves (banking, healthcare) — worth checking which neoclouds have compliance certifications that match Uniphore's regulated-customer footprint.</p></div>
+        <div class="card-meta">Infrastructure deal · Nvidia / Equinix / Together AI</div>
+        <h3>Nvidia, Equinix, and Together AI team up on open-model inference</h3>
+        <p class="dek">The three companies announced a data center deal to help enterprise customers run inference on open-source models across a variety of clouds and providers, aimed at reducing inference costs.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>This is exactly the kind of multi-cloud, multi-provider inference layer Uniphore should evaluate for latency-tolerant workloads (QA, summarization, tagging) rather than building equivalent routing in-house.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Acquisition · Nvidia / Hugging Face</div>
+        <h3>Hugging Face's model hub moves inside Nvidia</h3>
+        <p class="dek">Nvidia's ~$13-14B acquisition brings Hugging Face's 3M+ models and 18M+ developer community under a chipmaker's ownership for the first time at this scale — a different implication than the infrastructure angle above: it's now a single company controlling both a dominant compute layer and a dominant open-model distribution layer.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Any open-source model Uniphore sources via Hugging Face is now one acquisition away from different terms of access. Worth a quick internal audit of which models and pipelines currently depend on Hugging Face distribution.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Routing layer · OpenRouter</div>
+        <h3>OpenRouter aggregates 300+ models across 60+ providers</h3>
+        <p class="dek">OpenRouter positions itself as a routing layer that automatically handles fallbacks and finds the cheapest available option across providers, with a free tier alongside pay-per-token pricing.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A routing layer like this is a build-vs-buy decision Uniphore should make explicitly rather than by default — evaluate whether partnering here is faster and cheaper than maintaining in-house multi-model routing logic.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Inference platform · Fireworks AI</div>
+        <h3>Fireworks runs its own stack, optimizing purely for speed and cost</h3>
+        <p class="dek">Unlike OpenRouter's aggregation model, Fireworks operates its own inference infrastructure and is purely pay-per-use, competing on raw latency and cost for the specific models it supports.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Fireworks-style dedicated inference is the more relevant comparison point for Uniphore's own latency-sensitive, real-time voice inference — a cleaner benchmark than aggregator platforms for that specific workload.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Open models · Arcee AI</div>
+        <h3>Arcee AI makes Hugging Face the exclusive home for its models</h3>
+        <p class="dek">Arcee partnered with Hugging Face (July 2026) to host all of its models, datasets, and agent traces there, while its small language models (SLMs) are separately available on Together.ai and OpenRouter for pay-per-token access.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Small, efficient open models distributed this widely are a credible option for narrow, high-volume CX tasks (intent classification, tagging) where a frontier model is overkill — worth a cost/quality bake-off against Uniphore's current models for those specific tasks.</p></div>
       </div>
 
     </div>
@@ -544,24 +741,76 @@
       </div>
 
       <div class="card">
-        <div class="card-meta">Pricing · Alibaba Qwen</div>
-        <h3>Qwen3-Max cuts its cheapest flagship tier to RMB 2.5/M input tokens</h3>
-        <p class="dek">As of September 3, Alibaba's DashScope lists Qwen3-Max's 0–32K input tier at RMB 2.5 per million tokens — its most aggressive flagship pricing yet.</p>
-        <div class="angle"><span class="angle-label">Uniphore angle</span><p>If Uniphore's architecture allows model substitution for non-safety-critical workloads (e.g., summarization, tagging, QA), Qwen3-Max's pricing is worth a live cost comparison against incumbent model contracts.</p></div>
+        <div class="card-meta">Pricing &amp; releases · Alibaba Qwen</div>
+        <h3>Qwen keeps shipping — cheapest flagship tier now RMB 2.5/M tokens</h3>
+        <p class="dek">Alibaba's DashScope lists Qwen3-Max's 0–32K input tier at RMB 2.5 per million tokens as of September 3, its most aggressive flagship pricing yet, following Qwen3-Max-Thinking and a further Qwen3.8-Max-0902 release in the week of September 6.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Qwen's release cadence (multiple flagship updates within weeks) means any cost comparison against it goes stale fast. If Uniphore's architecture allows model substitution for non-safety-critical workloads, plan for a recurring quarterly re-check rather than a one-time bake-off.</p></div>
       </div>
 
       <div class="card">
         <div class="card-meta">Model release · Moonshot AI</div>
-        <h3>Kimi K3 ships as a 2.8-trillion-parameter open-source model</h3>
-        <p class="dek">Released July 17, 2026 with a 1M-token context window, Moonshot bills Kimi K3 as the world's largest open-source model, listed on pricing docs as of September 3.</p>
-        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A 1M-token open-source model changes the economics of long-context use cases like full-call-history reasoning or multi-session customer memory. Worth a technical bake-off against whatever long-context solution Uniphore currently licenses.</p></div>
+        <h3>Kimi K3 ships as a 2.8-trillion-parameter open-weight model</h3>
+        <p class="dek">Released July 17, 2026 with a 1M-token context window and backed by Alibaba and Tencent, Moonshot's Kimi K3 is billed as the largest open-weight model released to date, with Moonshot claiming it performs competitively with leading closed models and substantially outperforms some current-generation competitors on benchmarks. Open weights let other countries deploy top-tier AI locally without renting U.S. cloud capacity — treat lab-reported benchmark claims with the usual skepticism until independently verified.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A 1M-token open-weight model changes the economics of long-context use cases like full-call-history reasoning or multi-session customer memory, and the "deploy locally" pitch matters for data-residency-sensitive regions. Worth a technical bake-off against Uniphore's current long-context solution.</p></div>
       </div>
 
       <div class="card">
-        <div class="card-meta">Funding &amp; valuation · DeepSeek / Moonshot</div>
-        <h3>DeepSeek in talks to raise at $71B; Kimi's valuation triples to $35B</h3>
-        <p class="dek">DeepSeek is reportedly raising its first outside funding round at a $71B valuation, while Moonshot AI's Kimi has more than tripled in value to $35B as China's AI labs compete on both cost and capability.</p>
+        <div class="card-meta">Funding &amp; valuation · DeepSeek</div>
+        <h3>DeepSeek reportedly raising first outside funding at $71B</h3>
+        <p class="dek">DeepSeek is reportedly in talks to raise its first outside funding round at a $71B valuation, as China's AI labs compete on both cost and capability.</p>
         <div class="angle"><span class="angle-label">Uniphore angle</span><p>Capital of this scale flowing into cost-competitive Chinese labs suggests the price/performance gap with U.S. frontier labs will keep narrowing — a trend worth tracking quarterly rather than treating as a one-off headline.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="investors">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-investor-soft);color:var(--cat-investor)">Investors &amp; Capital</span>
+      <h2>a16z · NEA · Thrive · Valor · Prosperity7</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Fund growth · a16z</div>
+        <h3>a16z's growth fund balloons to $8.5B in eight months</h3>
+        <p class="dek">Andreessen Horowitz expanded its fifth Growth fund from $6.75B at its January 2026 launch to $8.5B, and separately raised a $1.1B "Machine Age Fund" — targeting growth-stage AI, American Dynamism, robotics, and the broader AI compute stack.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>a16z's growth-stage capital is fueling later-stage competitors and adjacent infrastructure players simultaneously. Worth a periodic scan of a16z's AI portfolio for growth-stage CX or agent-platform bets that could become direct competitors.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Fund activity · NEA</div>
+        <h3>NEA writes its first agentic-AI check, keeps AUM above $35B</h3>
+        <p class="dek">NEA backed P-1 AI on July 29, 2026 in its first agentic-AI investment, and separately participated in growth rounds for ElevenLabs ($180M Series C) and Synthesia ($180M Series D) — both generative-AI leaders adjacent to voice and video.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>NEA's ElevenLabs and Synthesia bets put capital directly into voice/video generation, adjacent to Uniphore's own space. Track NEA's portfolio for emerging voice-AI competitors before they reach Uniphore's deal cycles.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Fund raise · Thrive Capital / Thrive Holdings</div>
+        <h3>Thrive Holdings raises $2B to run AI-powered traditional businesses</h3>
+        <p class="dek">Thrive Holdings, OpenAI-backed and structured like a private-equity firm for AI, raised $2B at a $12B valuation from SoftBank, D1 Capital, and Altimeter — buying traditional businesses like accounting firms and rebuilding their workflows around AI.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>This "buy and AI-ify" model is a new go-to-market pattern worth watching — it creates AI-native competitors to traditional service businesses (potentially including CX/BPO-adjacent ones) that didn't exist as software buyers before.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Portfolio · Valor Equity Partners</div>
+        <h3>Valor Equity Partners rides xAI from $50B to $200B in under a year</h3>
+        <p class="dek">Valor joined a16z and Sequoia in xAI's $6B Series C (Dec 2024, $50B valuation), then followed on in a $10B Series D that pushed the valuation to $200B by July 2025.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Valor's return profile on xAI signals continued investor appetite for frontier-lab bets at extreme valuations — a reminder that capital scarcity is not a constraint frontier competitors are operating under right now.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Sovereign capital · Prosperity7 Ventures</div>
+        <h3>Saudi Aramco's VC arm backs AI startups directly</h3>
+        <p class="dek">Prosperity7 Ventures, the venture arm of Saudi Aramco, participated in Upscale AI's $200M Series A alongside Tiger Global, Premji Invest, and Xora Innovation.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Sovereign and strategic capital entering AI at the Series A stage signals long-horizon, non-traditional funding sources are now in play for AI startups generally — worth keeping on the radar for future partnership or investment conversations, not just as competitive signal.</p></div>
+      </div>
+
+      <div class="card pending">
+        <div class="card-meta">Needs input · Unresolved</div>
+        <h3>"Kotu" — fund not confirmed</h3>
+        <p class="dek">No confident match found. A "Kotu Venture Capital" surfaced in South Africa but doesn't appear to be an AI-focused fund, and neither Dan nor Sandra could confirm the intended name. Flagged for follow-up — let us know the exact fund and this section will start tracking it.</p>
       </div>
 
     </div>
@@ -580,12 +829,16 @@
         <p>As Bedrock AgentCore and Gemini Enterprise commoditize the orchestration layer, Uniphore's defensible position is being the model- and cloud-agnostic layer above them. Put Linux-Foundation-governed MCP support into technical marketing explicitly.</p></div>
       </li>
       <li><span class="move-num">3</span>
-        <div><h4>Pilot multi-model routing for non-real-time workloads</h4>
-        <p>Qwen3-Max's pricing and Kimi K3's long context make a credible case for routing summarization, tagging, and QA workloads to cheaper open models while reserving premium models for real-time voice — run a cost/quality bake-off this quarter.</p></div>
+        <div><h4>Reframe the pitch around "any model, any cloud"</h4>
+        <p>OpenAI now runs on Bedrock, Anthropic spans AWS and Google, and Chinese open models keep getting cheaper and more capable — competing on foundation-model access is a losing game. Win on voice-specific tuning, compliance workflows, and orchestration instead, and evaluate partnering with an inference-routing layer (OpenRouter/Fireworks/Together-style) rather than building multi-model routing in-house.</p></div>
       </li>
       <li><span class="move-num">4</span>
-        <div><h4>Re-benchmark compute sourcing against neocloud pricing</h4>
-        <p>With Nebius now supplying Microsoft's own cloud and Lambda undercutting on B200 pricing, ask infra/procurement to run a current-quarter cost comparison before renewing any single-hyperscaler compute commitment.</p></div>
+        <div><h4>Re-benchmark compute sourcing against a consolidating Nvidia stack</h4>
+        <p>With Nvidia acquiring Hugging Face and building a $500B customer financing pool, and Nebius/Lambda still undercutting on neocloud pricing, decide deliberately whether to lean into Nvidia's ecosystem or diversify compute sourcing before renewing any commitment.</p></div>
+      </li>
+      <li><span class="move-num">5</span>
+        <div><h4>Treat Databricks/Palantir/Snowflake/Glean as the new system of record</h4>
+        <p>These platforms are becoming the default enterprise "AI system of record" layer for the accounts Uniphore sells into. Prioritize clean, well-documented integration paths into each rather than positioning Uniphore as a competing platform.</p></div>
       </li>
     </ol>
   </section>
@@ -598,20 +851,31 @@
     <ul>
       <li><a href="https://www.tipranks.com/news/private-companies/uniphore-highlighted-in-forrester-evaluation-of-conversational-ai-platforms">Uniphore Highlighted in Forrester Evaluation — TipRanks</a></li>
       <li><a href="https://www.businesswire.com/news/home/20260128149689/en">Uniphore / Tech Mahindra announcement — Businesswire</a></li>
-      <li><a href="https://cxfoundation.com/blog/conversational-ai-providers">20 Conversational AI Platforms & Differentiators — CX Foundation</a></li>
       <li><a href="https://cresta.com/guides/best-verint-alternatives">Verint alternatives guide — Cresta</a></li>
-      <li><a href="https://www.retellai.com/blog/best-contact-center-ai-solutions">Contact Center AI Solutions 2026 — Retell AI</a></li>
       <li><a href="https://www.inflectioncx.com/intelligence/guides/ccaas-market-guide-2026">CCaaS Market Guide 2026 — InflectionCX</a></li>
-      <li><a href="https://xpander.ai/blog/hyperscaler-ai-agent-platforms-are-a-double-edged-sword">Hyperscaler AI agent platforms — xpander.ai</a></li>
+      <li><a href="https://thenewstack.io/openai-aws-bedrock-integration/">The OpenAI–Microsoft reset, decoded — The New Stack</a></li>
+      <li><a href="https://www.geekwire.com/2026/openais-models-land-on-amazon-bedrock-one-day-after-microsoft-exclusivity-ends/">OpenAI lands on Amazon Bedrock — GeekWire</a></li>
       <li><a href="https://www.constellationr.com/insights/news/google-cloud-aws-microsoft-azure-ai-vertical-integration-race">AI vertical integration race — Constellation Research</a></li>
-      <li><a href="https://www.datacenterknowledge.com/hyperscalers/hyperscalers-in-2026-what-s-next-for-the-world-s-largest-data-center-operators-">Hyperscalers in 2026 — Data Center Knowledge</a></li>
+      <li><a href="https://dealroom.co/news/147131-openai-reboots-as-anthropic-pulls-ahead-with-ipo-planned-for-september/">Anthropic IPO speculation — Dealroom</a></li>
+      <li><a href="https://www.cnbc.com/2026/08/12/google-deepmind-koray-kavukcuoglu.html">Google DeepMind's new boss — CNBC</a></li>
+      <li><a href="https://techcrunch.com/2025/10/09/reflection-raises-2b-to-be-americas-open-frontier-ai-lab-challenging-deepseek">Reflection AI raises $2B — TechCrunch</a></li>
+      <li><a href="https://aifund.ai/team-member/andrew-ng/">Andrew Ng — AI Fund</a></li>
+      <li><a href="https://www.databricks.com/company/newsroom/press-releases/palantir-and-databricks-announce-strategic-product-partnership">Palantir &amp; Databricks partnership — Databricks</a></li>
+      <li><a href="https://www.snowflake.com/en/news/press-releases/snowflake-palantir-announce-strategic-partnership-for-enterprise-ready-ai-analytics/">Snowflake &amp; Palantir partnership — Snowflake</a></li>
+      <li><a href="https://www.glean.com/press/glean-raises-150m-series-f-at-7-2b-valuation-to-accelerate-enterprise-ai-agent-innovation-globally">Glean funding &amp; ARR — Glean Press</a></li>
+      <li><a href="https://www.cnn.com/2026/09/03/tech/nvidia-hugging-face-ai-acquisition">Nvidia's Hugging Face acquisition — CNN Business</a></li>
+      <li><a href="https://techcrunch.com/2026/08/13/nvidias-new-500b-plan-is-risky-but-brilliant-especially-for-aging-gpus/">Nvidia's $500B financing plan — TechCrunch</a></li>
       <li><a href="https://cryptopond.com/best-gpu-neoclouds-2026-coreweave-nebius-lambda-crusoe-and-groq-ranked-by-published-pricing-and-contracted-power/">Best GPU Neoclouds 2026 — Cryptopond</a></li>
       <li><a href="https://marketwise.com/investing/coreweaves-55-billion-backlog-marks-the-next-phase-of-the-neocloud-boom/">CoreWeave's $55B backlog — MarketWise</a></li>
+      <li><a href="https://infrabase.ai/vs/openrouter-vs-fireworks-ai">Fireworks AI vs OpenRouter — Infrabase</a></li>
+      <li><a href="https://www.arcee.ai/blog/why-we-made-hugging-face-the-home-for-everything-we-build">Arcee AI x Hugging Face partnership — Arcee AI</a></li>
       <li><a href="https://dealroom.co/news/136199-inside-chinas-ai-ecosystem-beyond-deepseek-zhipu-minimax-moonshot-byteda/">Inside China's AI ecosystem — Dealroom</a></li>
-      <li><a href="https://about.geekpark.net/overnight/2026-09-04/">Zhipu and MiniMax post-IPO earnings — GeekPark</a></li>
-      <li><a href="https://fortune.com/2026/07/26/china-moonshot-deepseek-zai-kimi-challenging-us-ai-cost/">China's labs challenging on cost — Fortune</a></li>
-      <li><a href="https://en.wikipedia.org/wiki/Moonshot_AI">Moonshot AI — Wikipedia</a></li>
+      <li><a href="https://www.cnbc.com/2026/07/17/moonshot-ai-kimi-k3-model-openai-anthropic-china.html">Moonshot's Kimi K3 — CNBC</a></li>
+      <li><a href="https://fundmomentum.vc/blog/a16z-growth-fund-v-8-5b-expansion-2026">a16z Growth Fund V expansion — Fund Momentum</a></li>
+      <li><a href="https://www.citybiz.co/article/880988/nea-leads-19-million-investment-in-centralize-to-expand-ai-relationship-intelligence-platform/">NEA's AI investment activity — citybiz</a></li>
+      <li><a href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/">Thrive Holdings raises $2B — TechCrunch</a></li>
+      <li><a href="https://www.cbinsights.com/investor/prosperity7-ventures">Prosperity7 Ventures profile — CB Insights</a></li>
     </ul>
   </div>
-  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. This edition was compiled manually; see chat for status on automating tomorrow's refresh.</p>
+  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. Two entries ("Cognitos" and "Kotu") could not be matched to a confirmed company or fund — send the exact name and they'll be added to tomorrow's tracking scope. "AI Research" is being held open pending scope from Will.</p>
 </footer>
