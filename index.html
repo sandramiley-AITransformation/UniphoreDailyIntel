@@ -1,0 +1,617 @@
+<title>Daily Intel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F1F3F6;
+    --surface:#FFFFFF;
+    --surface-2:#E7EAF0;
+    --ink:#121A28;
+    --ink-dim:#525F72;
+    --ink-faint:#7E8A9C;
+    --border:#D9DEE6;
+    --accent:#A9791F;
+    --accent-soft:#F3E6C8;
+    --accent-ink:#5B4110;
+    --cat-competitor:#9C2F49;
+    --cat-competitor-soft:#F5DEE3;
+    --cat-hyperscaler:#25567F;
+    --cat-hyperscaler-soft:#DCE7F0;
+    --cat-neocloud:#1B6E5F;
+    --cat-neocloud-soft:#D9EBE6;
+    --cat-china:#A8571A;
+    --cat-china-soft:#F3E1CD;
+    --shadow: 0 1px 2px rgba(18,26,40,0.04), 0 6px 20px -8px rgba(18,26,40,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0C1420;
+      --surface:#121C2B;
+      --surface-2:#1A2536;
+      --ink:#E8ECF3;
+      --ink-dim:#9FABBD;
+      --ink-faint:#6E7A8D;
+      --border:#243044;
+      --accent:#DBAE4E;
+      --accent-soft:#3A2E14;
+      --accent-ink:#F2D392;
+      --cat-competitor:#E58098;
+      --cat-competitor-soft:#3A1E26;
+      --cat-hyperscaler:#7EAFDA;
+      --cat-hyperscaler-soft:#1B2C3D;
+      --cat-neocloud:#5FC4AE;
+      --cat-neocloud-soft:#12302A;
+      --cat-china:#E5985A;
+      --cat-china-soft:#3A2515;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C1420;
+    --surface:#121C2B;
+    --surface-2:#1A2536;
+    --ink:#E8ECF3;
+    --ink-dim:#9FABBD;
+    --ink-faint:#6E7A8D;
+    --border:#243044;
+    --accent:#DBAE4E;
+    --accent-soft:#3A2E14;
+    --accent-ink:#F2D392;
+    --cat-competitor:#E58098;
+    --cat-competitor-soft:#3A1E26;
+    --cat-hyperscaler:#7EAFDA;
+    --cat-hyperscaler-soft:#1B2C3D;
+    --cat-neocloud:#5FC4AE;
+    --cat-neocloud-soft:#12302A;
+    --cat-china:#E5985A;
+    --cat-china-soft:#3A2515;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Newsreader",Georgia,serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+
+  .masthead{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:14px clamp(16px,4vw,40px) 0;
+  }
+  .masthead-top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    padding-bottom:12px;
+  }
+  .wordmark{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .wordmark .kicker{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .wordmark h1{
+    font-size:22px;
+    font-weight:600;
+    font-style:italic;
+  }
+  .meta-line{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    text-align:right;
+  }
+  .meta-line strong{color:var(--ink-dim);font-weight:500;}
+  .navbar{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding-bottom:12px;
+    scrollbar-width:none;
+  }
+  .navbar::-webkit-scrollbar{display:none;}
+  .navbar a{
+    flex:none;
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    letter-spacing:0.03em;
+    text-decoration:none;
+    color:var(--ink-dim);
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:6px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .navbar a:hover{border-color:var(--accent);color:var(--ink);}
+
+  main{
+    max-width:920px;
+    margin:0 auto;
+    padding:28px clamp(16px,4vw,40px) 80px;
+  }
+
+  .signal-panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 24px;
+    box-shadow:var(--shadow);
+    margin-bottom:40px;
+  }
+  .signal-panel .label{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:14px;
+    display:block;
+  }
+  .signal-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .signal-list li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .dot{
+    width:9px;height:9px;border-radius:50%;
+    margin-top:7px;
+    flex:none;
+  }
+  .signal-list p{margin:0;font-size:15.5px;}
+  .signal-list b{font-weight:600;}
+
+  section.category{margin-bottom:48px;}
+  .cat-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+    scroll-margin-top:120px;
+  }
+  .cat-pill{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:6px;
+  }
+  .cat-head h2{
+    font-size:24px;
+    font-weight:500;
+  }
+  .cat-count{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-left:auto;
+  }
+
+  .cards{display:flex;flex-direction:column;gap:16px;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 22px;
+    box-shadow:var(--shadow);
+  }
+  .card-meta{
+    font-family:"IBM Plex Mono";
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .card-meta a{text-decoration:none;color:inherit;border-bottom:1px dotted var(--ink-faint);}
+  .card h3{
+    font-size:19px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .card p.dek{
+    margin:0 0 14px;
+    color:var(--ink-dim);
+    font-size:15px;
+  }
+  .angle{
+    display:flex;
+    gap:10px;
+    background:var(--surface-2);
+    border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+    padding:10px 14px;
+  }
+  .angle .angle-label{
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    flex:none;
+    padding-top:1px;
+  }
+  .angle p{margin:0;font-size:14.5px;color:var(--ink);}
+
+  .synthesis{
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:14px;
+    padding:26px clamp(20px,4vw,32px);
+    margin-top:8px;
+  }
+  .synthesis .label{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    margin-bottom:6px;
+    display:block;
+  }
+  .synthesis h2{
+    font-size:26px;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .moves{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .moves li{
+    display:flex;
+    gap:16px;
+  }
+  .move-num{
+    font-family:"Newsreader";
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    color:var(--accent-ink);
+    flex:none;
+    width:28px;
+  }
+  .moves h4{
+    font-family:"IBM Plex Sans";
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .moves p{margin:0;font-size:15px;color:var(--ink-dim);}
+
+  footer{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 clamp(16px,4vw,40px) 60px;
+    color:var(--ink-faint);
+    font-size:13px;
+  }
+  footer .sources{
+    border-top:1px solid var(--border);
+    padding-top:20px;
+    margin-top:8px;
+  }
+  footer .sources h5{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  footer .sources ul{
+    columns:2;
+    -webkit-columns:2;
+    column-gap:24px;
+    margin:0;
+    padding-left:16px;
+  }
+  footer .sources li{margin-bottom:6px;break-inside:avoid;}
+  footer .sources a{color:var(--ink-dim);text-decoration:none;}
+  footer .sources a:hover{text-decoration:underline;}
+  footer .note{margin-top:20px;line-height:1.6;}
+
+  @media (max-width:600px){
+    footer .sources ul{columns:1;}
+    .cat-head{flex-wrap:wrap;}
+    .cat-count{margin-left:0;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .card, .navbar a{transition:box-shadow .15s ease, border-color .15s ease;}
+  }
+</style>
+
+<div class="masthead">
+  <div class="masthead-top">
+    <div class="wordmark">
+      <span class="kicker">Uniphore ▸ Strategy</span>
+      <h1>Daily Intel</h1>
+    </div>
+    <div class="meta-line">
+      Edition <strong>Mon, Sep 7 2026</strong><br>
+      Compiled <strong>06:40 PT</strong> · next edition tomorrow
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="#signal">Today's Signal</a>
+    <a href="#competitors">CX &amp; Conversational AI</a>
+    <a href="#hyperscalers">Hyperscaler Deploy-Cos</a>
+    <a href="#neoclouds">Neoclouds</a>
+    <a href="#china">Chinese Labs</a>
+    <a href="#synthesis">Recommended Moves</a>
+  </nav>
+</div>
+
+<main>
+
+  <section class="signal-panel" id="signal">
+    <span class="label">Today's Signal — four things worth knowing before your first meeting</span>
+    <ul class="signal-list">
+      <li><span class="dot" style="background:var(--cat-competitor)"></span>
+        <p><b>Consolidation is squeezing the middle of the market.</b> NICE's $955M Cognigy buy and Salesforce/ServiceNow's $1.5B joint stake in Genesys mean two of Uniphore's platform rivals now have hyperscaler-adjacent balance sheets — differentiation, not feature parity, is the fight.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-hyperscaler)"></span>
+        <p><b>The orchestration layer is being commoditized.</b> AWS Bedrock AgentCore is GA with 1M+ SDK downloads and Google has rebranded Vertex AI into a full "Gemini Enterprise Agent Platform" — the generic agent-building layer is becoming a hyperscaler freebie.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-china)"></span>
+        <p><b>Frontier-adjacent capability is getting radically cheaper.</b> Moonshot's Kimi K3 (2.8T params, 1M-token context) shipped open-source, and Qwen3-Max just cut its cheapest flagship tier to RMB 2.5/M input tokens — the cost floor for "good enough" language models keeps dropping.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-neocloud)"></span>
+        <p><b>Compute is also getting cheaper, just not from the usual suppliers.</b> Nebius grew revenue 454% YoY and just signed a multi-year deal to supply Microsoft's own Azure cloud with GPUs — neoclouds are now inside the hyperscaler supply chain, not just competing with it.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="category" id="competitors">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-competitor-soft);color:var(--cat-competitor)">CX &amp; Conversational AI</span>
+      <h2>Direct competitors</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Consolidation · Businesswire / market coverage</div>
+        <h3>NICE–Cognigy and Salesforce/ServiceNow–Genesys reshape the top tier</h3>
+        <p class="dek">The two landmark 2025 deals — NICE's $955M acquisition of Cognigy and a joint $1.5B Salesforce/ServiceNow investment in Genesys — are still resetting the competitive map through 2026. Both moves push full-stack CCaaS incumbents deeper into agentic AI and give them platform-level capital that boutique players don't have.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Uniphore now competes against two rivals with either strategic-owner balance sheets or platform ecosystem lock-in. Position as the independent, best-of-breed agentic layer that plugs into whatever CCaaS/CRM stack a customer already has, rather than trying to out-platform the platforms.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Uniphore momentum · Company announcements</div>
+        <h3>Uniphore ships Marketing AI and an "Agentic AI Factory" with Tech Mahindra</h3>
+        <p class="dek">Uniphore launched Marketing AI on Aug 18 as marketing use cases move beyond the CDP, then partnered with Tech Mahindra on Aug 28 to deliver an "Agentic AI Factory for the Enterprise." Uniphore was also named a Leader in the 2026 Gartner Magic Quadrant for Customer Data Platforms and highlighted in Forrester's evaluation of conversational AI platforms.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>These are the strongest counter-narrative assets Uniphore has against the NICE/Genesys consolidation story — a GSI-distributed "factory" model and analyst-recognized platform status. Both deserve more airtime in competitive positioning decks and analyst briefings this quarter.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Product · Cresta / Forrester</div>
+        <h3>Cresta's Knowledge Agent narrows the real-time coaching gap</h3>
+        <p class="dek">Cresta shipped a Knowledge Agent in March 2026 that surfaces live knowledge-base content directly inside real-time agent coaching, building on a Forrester Leader placement in Conversation Intelligence Solutions for Contact Centers (Q2 2025).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Real-time KB grounding during live conversations is becoming table stakes for conversation-intelligence vendors, not a differentiator. Benchmark Uniphore's live-assist accuracy and latency against Cresta specifically, since it's the analyst-anointed leader in this sub-category.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Market structure · Analyst commentary</div>
+        <h3>The market has split into three distinct architectures</h3>
+        <p class="dek">Analysts now group vendors into full-stack CCaaS-with-AI-bolted-on (NICE, Genesys, Five9, Talkdesk), AI layers sitting on top of an existing CCaaS (Cresta, Observe.AI), and voice-first automation platforms replacing human handling outright (Retell AI, Amazon Connect + Lex).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Uniphore's positioning spans more than one of these buckets. Make sure sales messaging is explicit about which architecture a prospect is comparing against — the pitch against a "layer" player (Cresta) should differ from the pitch against a full-stack incumbent (Genesys).</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Alternatives &amp; pricing pressure · Buyer research sites</div>
+        <h3>Lower-cost entrants are showing up in buyer research</h3>
+        <p class="dek">Comparison sites now surface Level AI (pricing Uniphore's conversational AI publicly at $35/agent) and Tars (950+ pre-built drag-and-drop templates) as lower-friction alternatives during vendor shortlisting.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Public price-anchoring by smaller competitors is starting to shape early-stage buyer conversations. Equip sales with a clear value-per-agent framing before prospects arrive with a Level AI price point already in mind.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="hyperscalers">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-hyperscaler-soft);color:var(--cat-hyperscaler)">Hyperscaler Deploy-Cos</span>
+      <h2>AWS · Microsoft · Google</h2>
+      <span class="cat-count">4 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Platform GA · AWS</div>
+        <h3>Bedrock AgentCore goes GA with over a million SDK downloads</h3>
+        <p class="dek">AWS's agent runtime is now generally available, with customers including Cox Automotive, Druva, Cohere Health, Ericsson, Sony, and Thomson Reuters building on it.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Several of these named customers are the exact enterprise buyer profile Uniphore sells into. Check whether any are also Uniphore accounts running parallel AWS-native agent pilots, and clarify the "why not just use Bedrock" answer before it's asked.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Rebrand · Google Cloud Next</div>
+        <h3>Vertex AI becomes "Gemini Enterprise Agent Platform"</h3>
+        <p class="dek">Announced at Cloud Next in April 2026. Google reports Gemini Enterprise paid monthly active users up 40% quarter-over-quarter, and Gemini now processes 16B+ tokens per minute via direct API — up 60% QoQ.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Google is explicitly rebranding around "enterprise agents," the same buyer language Uniphore uses. Track whether this narrows Uniphore's ability to differentiate on "agentic" as a positioning word, or whether it just grows the market Uniphore can plug into as a model-agnostic layer.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Capex · Earnings calls</div>
+        <h3>Microsoft, Google, and AWS commit $500B+ in FY26 AI capex</h3>
+        <p class="dek">Satya Nadella said Microsoft will grow total AI capacity 80%+ this year and roughly double its data center footprint over the next two years.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>This capex wave is a leading indicator of compute price deflation and rising baseline model capability — both work in Uniphore's favor if the go-to-market treats hyperscaler infrastructure as substrate to build on rather than a competitor to beat.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standards · Linux Foundation</div>
+        <h3>Model Context Protocol moves under the Linux Foundation</h3>
+        <p class="dek">MCP, originally developed by Anthropic, is now positioned as the neutral, vendor-independent standard for connecting agents to external tools and data sources across all three hyperscalers.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A neutral interoperability standard is exactly the lever Uniphore needs to avoid being read as "an app on someone else's agent platform." Confirm Uniphore's MCP support is visible in technical marketing, not just implemented under the hood.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="neoclouds">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-neocloud-soft);color:var(--cat-neocloud)">Neoclouds</span>
+      <h2>GPU infrastructure challengers</h2>
+      <span class="cat-count">4 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Earnings · CoreWeave</div>
+        <h3>CoreWeave revenue up 112% YoY, but pricing is a premium, not a bargain</h3>
+        <p class="dek">Q2 2026 revenue reached $2.575B on a $55B backlog including a $14B Meta deal. CoreWeave holds the only Platinum rating in SemiAnalysis's ClusterMAX 2.0 ranking, with H100 pricing around $6.16/GPU-hr — notably higher than Nebius, Lambda, or Crusoe.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>CoreWeave's premium pricing reflects reliability guarantees large model-training customers pay for. For Uniphore's own inference workloads (lower training intensity, higher uptime sensitivity for live voice), the calculus may favor a different neocloud — worth a direct cost-per-workload comparison.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Earnings &amp; partnership · Nebius</div>
+        <h3>Nebius revenue up 454% YoY and now supplies Microsoft's own cloud</h3>
+        <p class="dek">Nebius grew revenue to $582.3M and signed a five-year, multibillion-dollar deal to supply GPU capacity directly into Microsoft's Azure cloud. It's the only neocloud publishing on-demand B300 pricing.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A hyperscaler now sourcing capacity from a neocloud is a signal that the buy-vs-build compute calculus has shifted industry-wide. Worth revisiting Uniphore's own infrastructure sourcing assumptions rather than defaulting to a single hyperscaler contract.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Pricing · Lambda / Crusoe</div>
+        <h3>Lambda undercuts the market on B200 pricing ahead of a likely IPO</h3>
+        <p class="dek">Lambda publishes the lowest B200 on-demand rate in the market at $6.69/GPU-hr. Both Lambda and Crusoe remain private and are widely expected to pursue IPOs.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Sustained neocloud price competition is a margin tailwind for any compute-heavy real-time voice AI feature Uniphore wants to ship without raising customer pricing. Flag for the infra/procurement team as a benchmark, not just a headline.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Market framing · Industry analysis</div>
+        <h3>Neoclouds are being framed as the flexible, regional alternative</h3>
+        <p class="dek">Nscale, Civo, CoreWeave, Crusoe, Lambda, Nebius, and Vultr are increasingly described as GPU-as-a-Service specialists offering regional and performance-optimized alternatives to the big three hyperscalers.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Regional neocloud options may matter for data-residency-sensitive deployments in regulated industries Uniphore serves (banking, healthcare) — worth checking which neoclouds have compliance certifications that match Uniphore's regulated-customer footprint.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="china">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-china-soft);color:var(--cat-china)">Chinese Labs</span>
+      <h2>Zhipu · Qwen · Moonshot · MiniMax</h2>
+      <span class="cat-count">4 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Earnings · Zhipu (Z.ai) &amp; MiniMax</div>
+        <h3>Zhipu and MiniMax post first earnings as public companies, five days apart</h3>
+        <p class="dek">Both went public in Hong Kong and reported first-half revenue growing near-quadruple digits — Zhipu's H1 revenue reportedly up close to 400% YoY, MiniMax's H1 revenue up 283% YoY to $117M with an ~$800M August ARR run-rate. Both posted adjusted losses close to $300M. (Some headline ARR figures in early coverage don't fully reconcile with reported revenue — worth validating against the actual filings before quoting externally.)</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Two Chinese model labs are now under public-market earnings discipline, which typically accelerates aggressive pricing to defend growth narratives. Expect continued downward pressure on API pricing from this cohort.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Pricing · Alibaba Qwen</div>
+        <h3>Qwen3-Max cuts its cheapest flagship tier to RMB 2.5/M input tokens</h3>
+        <p class="dek">As of September 3, Alibaba's DashScope lists Qwen3-Max's 0–32K input tier at RMB 2.5 per million tokens — its most aggressive flagship pricing yet.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>If Uniphore's architecture allows model substitution for non-safety-critical workloads (e.g., summarization, tagging, QA), Qwen3-Max's pricing is worth a live cost comparison against incumbent model contracts.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Model release · Moonshot AI</div>
+        <h3>Kimi K3 ships as a 2.8-trillion-parameter open-source model</h3>
+        <p class="dek">Released July 17, 2026 with a 1M-token context window, Moonshot bills Kimi K3 as the world's largest open-source model, listed on pricing docs as of September 3.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A 1M-token open-source model changes the economics of long-context use cases like full-call-history reasoning or multi-session customer memory. Worth a technical bake-off against whatever long-context solution Uniphore currently licenses.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Funding &amp; valuation · DeepSeek / Moonshot</div>
+        <h3>DeepSeek in talks to raise at $71B; Kimi's valuation triples to $35B</h3>
+        <p class="dek">DeepSeek is reportedly raising its first outside funding round at a $71B valuation, while Moonshot AI's Kimi has more than tripled in value to $35B as China's AI labs compete on both cost and capability.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Capital of this scale flowing into cost-competitive Chinese labs suggests the price/performance gap with U.S. frontier labs will keep narrowing — a trend worth tracking quarterly rather than treating as a one-off headline.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="synthesis" id="synthesis">
+    <span class="label">Synthesis</span>
+    <h2>Recommended moves this week</h2>
+    <ol class="moves">
+      <li><span class="move-num">1</span>
+        <div><h4>Lead with the GSI story against consolidation</h4>
+        <p>Give the Tech Mahindra "Agentic AI Factory" partnership more weight in competitive decks now that NICE and the Salesforce/ServiceNow–Genesys tie-up have platform-level capital behind them. Pursue at least one additional GSI relationship to widen distribution the way Tech Mahindra does.</p></div>
+      </li>
+      <li><span class="move-num">2</span>
+        <div><h4>Make MCP support a visible differentiator, not a backend detail</h4>
+        <p>As Bedrock AgentCore and Gemini Enterprise commoditize the orchestration layer, Uniphore's defensible position is being the model- and cloud-agnostic layer above them. Put Linux-Foundation-governed MCP support into technical marketing explicitly.</p></div>
+      </li>
+      <li><span class="move-num">3</span>
+        <div><h4>Pilot multi-model routing for non-real-time workloads</h4>
+        <p>Qwen3-Max's pricing and Kimi K3's long context make a credible case for routing summarization, tagging, and QA workloads to cheaper open models while reserving premium models for real-time voice — run a cost/quality bake-off this quarter.</p></div>
+      </li>
+      <li><span class="move-num">4</span>
+        <div><h4>Re-benchmark compute sourcing against neocloud pricing</h4>
+        <p>With Nebius now supplying Microsoft's own cloud and Lambda undercutting on B200 pricing, ask infra/procurement to run a current-quarter cost comparison before renewing any single-hyperscaler compute commitment.</p></div>
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <div class="sources">
+    <h5>Sources referenced in this edition</h5>
+    <ul>
+      <li><a href="https://www.tipranks.com/news/private-companies/uniphore-highlighted-in-forrester-evaluation-of-conversational-ai-platforms">Uniphore Highlighted in Forrester Evaluation — TipRanks</a></li>
+      <li><a href="https://www.businesswire.com/news/home/20260128149689/en">Uniphore / Tech Mahindra announcement — Businesswire</a></li>
+      <li><a href="https://cxfoundation.com/blog/conversational-ai-providers">20 Conversational AI Platforms & Differentiators — CX Foundation</a></li>
+      <li><a href="https://cresta.com/guides/best-verint-alternatives">Verint alternatives guide — Cresta</a></li>
+      <li><a href="https://www.retellai.com/blog/best-contact-center-ai-solutions">Contact Center AI Solutions 2026 — Retell AI</a></li>
+      <li><a href="https://www.inflectioncx.com/intelligence/guides/ccaas-market-guide-2026">CCaaS Market Guide 2026 — InflectionCX</a></li>
+      <li><a href="https://xpander.ai/blog/hyperscaler-ai-agent-platforms-are-a-double-edged-sword">Hyperscaler AI agent platforms — xpander.ai</a></li>
+      <li><a href="https://www.constellationr.com/insights/news/google-cloud-aws-microsoft-azure-ai-vertical-integration-race">AI vertical integration race — Constellation Research</a></li>
+      <li><a href="https://www.datacenterknowledge.com/hyperscalers/hyperscalers-in-2026-what-s-next-for-the-world-s-largest-data-center-operators-">Hyperscalers in 2026 — Data Center Knowledge</a></li>
+      <li><a href="https://cryptopond.com/best-gpu-neoclouds-2026-coreweave-nebius-lambda-crusoe-and-groq-ranked-by-published-pricing-and-contracted-power/">Best GPU Neoclouds 2026 — Cryptopond</a></li>
+      <li><a href="https://marketwise.com/investing/coreweaves-55-billion-backlog-marks-the-next-phase-of-the-neocloud-boom/">CoreWeave's $55B backlog — MarketWise</a></li>
+      <li><a href="https://dealroom.co/news/136199-inside-chinas-ai-ecosystem-beyond-deepseek-zhipu-minimax-moonshot-byteda/">Inside China's AI ecosystem — Dealroom</a></li>
+      <li><a href="https://about.geekpark.net/overnight/2026-09-04/">Zhipu and MiniMax post-IPO earnings — GeekPark</a></li>
+      <li><a href="https://fortune.com/2026/07/26/china-moonshot-deepseek-zai-kimi-challenging-us-ai-cost/">China's labs challenging on cost — Fortune</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Moonshot_AI">Moonshot AI — Wikipedia</a></li>
+    </ul>
+  </div>
+  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. This edition was compiled manually; see chat for status on automating tomorrow's refresh.</p>
+</footer>
