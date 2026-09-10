@@ -20,15 +20,17 @@ for arg in "$@"; do
   esac
 done
 
-# 1. Generate the Markdown report into its date-ordered location.
-echo "▸ Generating Markdown report…"
-REPORT_PATH="$(python3 generate_report.py)"
-echo "  wrote $REPORT_PATH"
+# 1. Generate the Markdown + HTML reports into their date-ordered location,
+#    and refresh the canonical permalink (reports/uniphore-daily-intel.html).
+echo "▸ Generating reports…"
+OUTPUTS="$(python3 generate_report.py)"
+while IFS= read -r line; do echo "  wrote $line"; done <<< "$OUTPUTS"
+MD_PATH="$(printf '%s\n' "$OUTPUTS" | grep '\.md$' | head -1)"
 
-# 2. Commit and push the report (and any index.html changes) to origin.
+# 2. Commit and push the reports (and any index.html changes) to origin.
 if [[ "$DO_PUSH" -eq 1 ]]; then
   if [[ -n "$(git status --porcelain)" ]]; then
-    EDITION="$(basename "$REPORT_PATH" .md | sed 's/^daily-intel-//')"
+    EDITION="$(basename "$MD_PATH" .md | sed 's/^daily-intel-//')"
     echo "▸ Committing and pushing to origin…"
     git add -A
     git commit -m "Archive Daily Intel report for ${EDITION}
