@@ -321,6 +321,18 @@ def main() -> int:
     raw = SOURCE.read_text(encoding="utf-8")
     edition = parse_edition_date(raw)
 
+    # Guard: this script PACKAGES index.html; it does not write the news. If the
+    # edition in index.html isn't today's date, you're about to publish an old
+    # (or future) edition — warn loudly so it isn't a surprise.
+    today = dt.date.today()
+    if edition != today:
+        print(
+            f"WARNING: index.html edition is {edition.isoformat()} but today is "
+            f"{today.isoformat()}. This publishes the {edition.isoformat()} edition. "
+            f"Update index.html with today's content first if that's not intended.",
+            file=sys.stderr,
+        )
+
     builder = TreeBuilder()
     builder.feed(raw)
 
