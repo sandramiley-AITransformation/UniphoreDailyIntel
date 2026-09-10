@@ -25,6 +25,10 @@ REPORTS_DIR = ROOT / "daily-reports"
 TEMPLATE = ROOT / "report-template.html"
 CANONICAL_DIR = ROOT / "reports"
 CANONICAL_FILE = CANONICAL_DIR / "uniphore-daily-intel.html"
+# public/ is the ONLY folder published to GitHub Pages (see
+# .github/workflows/pages.yml). index.html here is the latest edition.
+PUBLIC_DIR = ROOT / "public"
+PUBLIC_FILE = PUBLIC_DIR / "index.html"
 
 # Tags we drop entirely, contents and all.
 SKIP_TAGS = {"head", "style", "script", "nav", "link", "meta", "title"}
@@ -552,11 +556,15 @@ def main() -> int:
     html_file = out_dir / f"daily-intel-{iso}.html"
     html_file.write_text(page, encoding="utf-8")
 
-    # ---- Canonical permalink: always the latest edition ----
+    # ---- Canonical permalink: always the latest edition (in-repo, private) ----
     CANONICAL_DIR.mkdir(parents=True, exist_ok=True)
     CANONICAL_FILE.write_text(page, encoding="utf-8")
 
-    for p in (md_file, html_file, CANONICAL_FILE):
+    # ---- Public copy: the only file published to GitHub Pages ----
+    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+    PUBLIC_FILE.write_text(page, encoding="utf-8")
+
+    for p in (md_file, html_file, CANONICAL_FILE, PUBLIC_FILE):
         print(str(p.relative_to(ROOT)))
     return 0
 
