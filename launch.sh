@@ -43,6 +43,10 @@ EDITION="$(basename "$MD_PATH" .md | sed 's/^daily-intel-//')"
 
 # 2. Commit and push the reports to the PRIVATE origin.
 if [[ "$DO_PUSH" -eq 1 ]]; then
+  # Heartbeat: a per-run timestamp guarantees every publish produces a real
+  # commit + push. This surfaces a broken push as an error (instead of a silent
+  # "nothing to push") and gives the public site a visible last-updated marker.
+  date -u +"%Y-%m-%dT%H:%M:%SZ" > public/last-updated.txt
   if [[ -n "$(git status --porcelain)" ]]; then
     echo "▸ Committing and pushing to private origin…"
     git add -A
