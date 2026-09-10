@@ -22,7 +22,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "index.html"
 REPORTS_DIR = ROOT / "daily-reports"
-TEMPLATE = ROOT / "report-template.html"
 CANONICAL_DIR = ROOT / "reports"
 CANONICAL_FILE = CANONICAL_DIR / "uniphore-daily-intel.html"
 # public/ is the ONLY folder published to GitHub Pages (see
@@ -300,188 +299,6 @@ def render_block(node: Node, ordered_index=None) -> list[str]:
     return blocks
 
 
-# ---------------------------------------------------------------------------
-# HTML rendering (parallel to the Markdown renderer, same structure/rules).
-# ---------------------------------------------------------------------------
-
-def render_inline_html(node: Node) -> str:
-    parts = []
-    for child in node.children:
-        if child.tag is None:
-            parts.append(html.escape(collapse_ws(child.text)))
-        elif child.tag == "br":
-            parts.append("<br>")
-        elif child.tag in ("b", "strong"):
-            inner = render_inline_html(child).strip()
-            parts.append(f"<strong>{inner}</strong>" if inner else "")
-        elif child.tag in ("i", "em"):
-            inner = render_inline_html(child).strip()
-            parts.append(f"<em>{inner}</em>" if inner else "")
-        elif child.tag == "a":
-            inner = render_inline_html(child).strip()
-            href = child.attrs.get("href", "").strip()
-            parts.append(
-                f'<a href="{html.escape(href, quote=True)}">{inner}</a>'
-                if href else inner
-            )
-        elif child.tag in ("span", "small"):
-            if child.classes & DROP_CLASSES:
-                continue
-            inner = render_inline_html(child).strip()
-            if not inner:
-                continue
-            cls = child.classes
-            if cls & BOLD_LABEL_CLASSES:
-                parts.append(f"<strong>{inner}</strong>")
-            elif cls & ITALIC_LABEL_CLASSES:
-                parts.append(f"<em>{inner}</em>")
-            else:
-                parts.append(inner)
-        elif child.tag == "blockquote":
-            parts.append(render_inline_html(child).strip())
-        else:
-            parts.append(render_inline_html(child))
-    return "".join(parts)
-
-
-def render_html_listsafe(node: Node) -> list[str]:
-    out: list[str] = []
-    for child in node.children:
-        if child.tag in HEADING_LEVEL:
-            t = render_inline_html(child).strip()
-            if t:
-                out.append(f'<p class="item-lead"><strong>{t}</strong></p>')
-        elif child.tag in ("div", "section"):
-            out.extend(render_html_listsafe(child))
-        elif child.tag is None:
-            if child.text and child.text.strip():
-                out.append(f"<p>{html.escape(collapse_ws(child.text).strip())}</p>")
-        elif child.tag in ("span", "b", "strong", "i", "em", "a", "small"):
-            wrapper = Node("p")
-            wrapper.children = [child]
-            t = render_inline_html(wrapper).strip()
-            if t:
-                out.append(f"<p>{t}</p>")
-        else:
-            out.extend(render_html_blocks(child))
-    return out
-
-
-def render_html_blocks(node: Node) -> list[str]:
-    blocks: list[str] = []
-
-    if node.tag in HEADING_LEVEL:
-        lvl = HEADING_LEVEL[node.tag]
-        t = render_inline_html(node).strip()
-        if t:
-            blocks.append(f"<h{lvl}>{t}</h{lvl}>")
-        return blocks
-
-    if node.tag == "p":
-        t = render_inline_html(node).strip()
-        if t:
-            blocks.append(f"<p>{t}</p>")
-        return blocks
-
-    if node.tag == "blockquote":
-        t = render_inline_html(node).strip()
-        if t:
-            blocks.append(f"<blockquote><p>{t}</p></blockquote>")
-        return blocks
-
-    if node.tag == "li":
-        inline_parts = []
-        child_blocks = []
-        for child in node.children:
-            if child.tag is None or child.tag in (
-                "span", "b", "strong", "i", "em", "a", "br", "small",
-            ):
-                inline_parts.append(child)
-            elif child.tag in HEADING_LEVEL:
-                t = render_inline_html(child).strip()
-                if t:
-                    child_blocks.append(f'<p class="item-lead"><strong>{t}</strong></p>')
-            elif child.tag in ("div", "section"):
-                child_blocks.extend(render_html_listsafe(child))
-            else:
-                child_blocks.extend(render_html_blocks(child))
-        wrapper = Node("p")
-        wrapper.children = inline_parts
-        lead = render_inline_html(wrapper).strip()
-        inner = (lead if lead else "") + "".join(child_blocks)
-        blocks.append(f"<li>{inner}</li>")
-        return blocks
-
-    if node.tag in ("ul", "ol"):
-        items = [c for c in node.children if c.tag == "li"]
-        rendered = []
-        for li in items:
-            rendered.extend(render_html_blocks(li))
-        if rendered:
-            blocks.append(f"<{node.tag}>\n" + "\n".join(rendered) + f"\n</{node.tag}>")
-        return blocks
-
-    cls = node.classes
-    has_block_child = any(
-        c.tag in BLOCK_TAGS for c in node.children if c.tag is not None
-    )
-
-    # Label-only containers -> a single classed paragraph.
-    if not has_block_child and (cls & BOLD_LABEL_CLASSES or cls & ITALIC_LABEL_CLASSES):
-        t = render_inline_html(node).strip()
-        if t:
-            if "card-meta" in cls:
-                blocks.append(f'<p class="card-meta">{t}</p>')
-            elif "label" in cls:
-                blocks.append(f'<p class="label">{t}</p>')
-            elif cls & BOLD_LABEL_CLASSES:
-                blocks.append(f"<p><strong>{t}</strong></p>")
-            else:
-                blocks.append(f'<p class="label-italic">{t}</p>')
-        return blocks
-
-    if not has_block_child and "meta-line" in cls:
-        t = render_inline_html(node).strip()
-        if t:
-            blocks.append(f'<p class="meta-line">{t}</p>')
-        return blocks
-
-    # Generic container.
-    inline_buffer = []
-
-    def flush_inline():
-        if inline_buffer:
-            wrapper = Node("p")
-            wrapper.children = list(inline_buffer)
-            t = render_inline_html(wrapper).strip()
-            if t:
-                blocks.append(f"<p>{t}</p>")
-            inline_buffer.clear()
-
-    for child in node.children:
-        if child.tag == "span" and "kicker" in child.classes:
-            flush_inline()
-            inner = render_inline_html(child).strip()
-            if inner:
-                blocks.append(f'<p class="kicker-line">{inner}</p>')
-        elif child.tag == "span" and (child.classes & {"label", "card-meta"}):
-            flush_inline()
-            inner = render_inline_html(child).strip()
-            if inner:
-                c = "card-meta" if "card-meta" in child.classes else "label"
-                blocks.append(f'<p class="{c}">{inner}</p>')
-        elif child.tag is None:
-            if child.text and child.text.strip():
-                inline_buffer.append(child)
-        elif child.tag in ("span", "b", "strong", "i", "em", "a", "small", "br"):
-            inline_buffer.append(child)
-        else:
-            flush_inline()
-            blocks.extend(render_html_blocks(child))
-    flush_inline()
-    return blocks
-
-
 def parse_edition_date(raw_html: str) -> dt.date:
     m = re.search(r"Edition\s*<strong>([^<]+)</strong>", raw_html)
     if m:
@@ -536,21 +353,18 @@ def main() -> int:
     md_file = out_dir / f"daily-intel-{iso}.md"
     md_file.write_text(doc, encoding="utf-8")
 
-    # ---- HTML edition (styled via report-template.html) ----
-    if not TEMPLATE.exists():
-        print(f"error: template {TEMPLATE} not found", file=sys.stderr)
-        return 1
-    html_blocks = render_html_blocks(target)
-    body_html = "\n".join(b for b in html_blocks if b.strip())
-    body_html = "\n".join("      " + ln for ln in body_html.split("\n"))
-
+    # ---- HTML edition ----
+    # We publish the hero page (index.html) VERBATIM so the styled masthead,
+    # sticky nav (native #anchor links, no JS), category pills, cards, and
+    # "Uniphore angle" boxes are reproduced exactly. The only change is to
+    # stamp the edition date into <title> so tabs/bookmarks are distinct.
     human_edition = edition.strftime("%A, %B %-d, %Y")
-    generated_human = dt.datetime.now().strftime("%b %-d, %Y at %-I:%M %p %Z").strip()
-    page = (
-        TEMPLATE.read_text(encoding="utf-8")
-        .replace("{{TITLE}}", f"Daily Intel — Uniphore · {human_edition}")
-        .replace("{{GENERATED_HUMAN}}", generated_human)
-        .replace("{{CONTENT}}", body_html)
+    page = re.sub(
+        r"<title>.*?</title>",
+        f"<title>Daily Intel — Uniphore · {human_edition}</title>",
+        raw,
+        count=1,
+        flags=re.DOTALL,
     )
 
     html_file = out_dir / f"daily-intel-{iso}.html"
