@@ -62,10 +62,11 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>" >/dev/null
     TMP="$(mktemp -d)"
     trap 'rm -rf "$TMP"' EXIT
     git clone --depth 1 -q "$PUBLIC_REMOTE" "$TMP"
-    cp public/index.html "$TMP/index.html"
+    # Sync the whole public/ tree: latest index.html, editions/, archive.html.
+    cp -R public/. "$TMP/"
     ( cd "$TMP"
       if [[ -n "$(git status --porcelain)" ]]; then
-        git add index.html
+        git add -A
         git -c user.name="Sandra Miley" -c user.email="dan.miley@gmail.com" \
           commit -q -m "Publish Daily Intel report for ${EDITION}
 

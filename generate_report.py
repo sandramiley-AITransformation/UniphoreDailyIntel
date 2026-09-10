@@ -28,6 +28,11 @@ CANONICAL_FILE = CANONICAL_DIR / "uniphore-daily-intel.html"
 # .github/workflows/pages.yml). index.html here is the latest edition.
 PUBLIC_DIR = ROOT / "public"
 PUBLIC_FILE = PUBLIC_DIR / "index.html"
+# Public GitHub Pages site (public repo) — used for absolute links in the nav.
+PUBLIC_SITE = "https://sandramiley-aitransformation.github.io/uniphore-daily-intel"
+ARCHIVE_URL = f"{PUBLIC_SITE}/archive.html"
+EDITIONS_DIR = PUBLIC_DIR / "editions"       # public/editions/YYYY-MM-DD.html
+ARCHIVE_FILE = PUBLIC_DIR / "archive.html"   # historical index of all editions
 
 # Tags we drop entirely, contents and all.
 SKIP_TAGS = {"head", "style", "script", "nav", "link", "meta", "title"}
@@ -313,6 +318,95 @@ def parse_edition_date(raw_html: str) -> dt.date:
     return dt.date.today()
 
 
+def inject_archive_nav(page: str) -> str:
+    """Ensure the navbar ends with a far-right 'Past Editions' link pointing at
+    the public archive. Idempotent; absolute URL so it works from any page."""
+    if 'class="navbar"' not in page or f'href="{ARCHIVE_URL}"' in page:
+        return page
+    link = f'    <a href="{ARCHIVE_URL}" class="nav-archive">Past Editions ▸</a>\n  '
+    return page.replace("</nav>", link + "</nav>", 1)
+
+
+def build_archive_html(dates: list[dt.date]) -> str:
+    """Render the historical index listing every edition, newest first."""
+    rows = []
+    for i, d in enumerate(dates):
+        iso = d.isoformat()
+        human = d.strftime("%A, %B %-d, %Y")
+        latest = ' <span class="tag">latest</span>' if i == 0 else ""
+        rows.append(
+            f'      <li><a href="editions/{iso}.html">'
+            f'<span class="d">{human}</span>'
+            f'<span class="iso">{iso}</span>{latest}</a></li>'
+        )
+    rows_html = "\n".join(rows) if rows else "      <li>No editions yet.</li>"
+    count = len(dates)
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Past Editions — Uniphore Daily Intel</title>
+<meta name="description" content="Archive of past Uniphore Daily Intel editions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{{
+    --bg:#F1F3F6; --surface:#FFFFFF; --ink:#121A28; --ink-dim:#525F72;
+    --ink-faint:#7E8A9C; --border:#D9DEE6; --accent:#A9791F; --accent-ink:#5B4110;
+    --accent-soft:#F3E6C8;
+  }}
+  @media (prefers-color-scheme: dark){{
+    :root:not([data-theme="light"]){{
+      --bg:#0C1420; --surface:#121C2B; --ink:#E8ECF3; --ink-dim:#9FABBD;
+      --ink-faint:#6E7A8D; --border:#243044; --accent:#DBAE4E; --accent-ink:#F2D392;
+      --accent-soft:#3A2E14;
+    }}
+  }}
+  *{{box-sizing:border-box;}}
+  body{{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;}}
+  .wrap{{max-width:760px;margin:0 auto;padding:40px clamp(16px,4vw,40px) 80px;}}
+  .kicker{{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:600;}}
+  h1{{font-family:"Newsreader",Georgia,serif;font-weight:600;font-style:italic;
+    font-size:34px;margin:.15em 0 .1em;}}
+  .sub{{color:var(--ink-dim);font-size:15px;margin:0 0 4px;}}
+  .back{{display:inline-block;margin:18px 0 26px;font-family:"IBM Plex Mono";
+    font-size:12px;text-decoration:none;color:var(--ink-dim);background:var(--surface);
+    border:1px solid var(--border);padding:7px 13px;border-radius:999px;}}
+  .back:hover{{border-color:var(--accent);color:var(--ink);}}
+  ul{{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}}
+  li a{{display:flex;align-items:baseline;gap:12px;text-decoration:none;color:var(--ink);
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:14px 18px;transition:border-color .15s ease;}}
+  li a:hover{{border-color:var(--accent);}}
+  .d{{font-family:"Newsreader",serif;font-size:18px;font-weight:600;}}
+  .iso{{font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-faint);margin-left:auto;}}
+  .tag{{font-family:"IBM Plex Mono";font-size:10px;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--accent-ink);background:var(--accent-soft);
+    border-radius:5px;padding:2px 7px;}}
+  .count{{font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-faint);margin:0 0 14px;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="kicker">Uniphore ▸ Strategy</span>
+    <h1>Daily Intel — Past Editions</h1>
+    <p class="sub">Every published edition, newest first.</p>
+    <a class="back" href="./">▸ Back to today's edition</a>
+    <p class="count">{count} edition{"s" if count != 1 else ""}</p>
+    <ul>
+{rows_html}
+    </ul>
+  </div>
+</body>
+</html>
+"""
+
+
 def main() -> int:
     if not SOURCE.exists():
         print(f"error: {SOURCE} not found", file=sys.stderr)
@@ -378,6 +472,7 @@ def main() -> int:
         count=1,
         flags=re.DOTALL,
     )
+    page = inject_archive_nav(page)
 
     html_file = out_dir / f"daily-intel-{iso}.html"
     html_file.write_text(page, encoding="utf-8")
@@ -386,12 +481,28 @@ def main() -> int:
     CANONICAL_DIR.mkdir(parents=True, exist_ok=True)
     CANONICAL_FILE.write_text(page, encoding="utf-8")
 
-    # ---- Public copy: the only file published to GitHub Pages ----
+    # ---- Public site: latest at root + every edition + archive index ----
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
     PUBLIC_FILE.write_text(page, encoding="utf-8")
 
-    for p in (md_file, html_file, CANONICAL_FILE, PUBLIC_FILE):
+    # Derive the complete edition history from the private archive, publish a
+    # copy of each (with the archive nav), and build the historical index.
+    EDITIONS_DIR.mkdir(parents=True, exist_ok=True)
+    dates = []
+    for f in REPORTS_DIR.glob("*/*/*/daily-intel-*.html"):
+        m = re.search(r"daily-intel-(\d{4})-(\d{2})-(\d{2})\.html$", f.name)
+        if not m:
+            continue
+        d = dt.date(int(m[1]), int(m[2]), int(m[3]))
+        dates.append(d)
+        edition_page = inject_archive_nav(f.read_text(encoding="utf-8"))
+        (EDITIONS_DIR / f"{d.isoformat()}.html").write_text(edition_page, encoding="utf-8")
+    dates = sorted(set(dates), reverse=True)
+    ARCHIVE_FILE.write_text(build_archive_html(dates), encoding="utf-8")
+
+    for p in (md_file, html_file, CANONICAL_FILE, PUBLIC_FILE, ARCHIVE_FILE):
         print(str(p.relative_to(ROOT)))
+    print(f"editions: {len(dates)} → {EDITIONS_DIR.relative_to(ROOT)}/")
     return 0
 
 
