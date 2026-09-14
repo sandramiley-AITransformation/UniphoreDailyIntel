@@ -53,9 +53,12 @@ if [[ "$DO_PUSH" -eq 1 ]]; then
     git commit -m "Archive Daily Intel report for ${EDITION}
 
 Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>" >/dev/null
-    BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-    git push origin "$BRANCH"
-    echo "  pushed to origin/${BRANCH}"
+    # Push the current commit to main explicitly. Cloud sandboxes check the
+    # repo out in DETACHED HEAD, so `rev-parse --abbrev-ref HEAD` yields the
+    # literal "HEAD" and `git push origin HEAD` is rejected. HEAD:main works
+    # whether we're on the main branch or detached at origin/main.
+    git push origin HEAD:main
+    echo "  pushed to origin/main"
   else
     echo "▸ No changes to push — working tree clean."
   fi
