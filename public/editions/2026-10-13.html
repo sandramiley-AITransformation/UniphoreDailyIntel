@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Intel — Uniphore · Tuesday, October 13, 2026</title>
+<meta name="description" content="A daily competitive-intelligence briefing for Uniphore covering CX/conversational-AI rivals, hyperscalers, frontier labs, enterprise AI platforms, compute infrastructure, model platforms, Chinese AI labs, and investors, with strategic takeaways for each.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F1F3F6;
+    --surface:#FFFFFF;
+    --surface-2:#E7EAF0;
+    --ink:#121A28;
+    --ink-dim:#525F72;
+    --ink-faint:#7E8A9C;
+    --border:#D9DEE6;
+    --accent:#A9791F;
+    --accent-soft:#F3E6C8;
+    --accent-ink:#5B4110;
+    --cat-competitor:#9C2F49;
+    --cat-competitor-soft:#F5DEE3;
+    --cat-hyperscaler:#25567F;
+    --cat-hyperscaler-soft:#DCE7F0;
+    --cat-frontier:#5B3E99;
+    --cat-frontier-soft:#E7E0F5;
+    --cat-enterprise:#1B6E7D;
+    --cat-enterprise-soft:#D9EBEE;
+    --cat-infra:#1B6E5F;
+    --cat-infra-soft:#D9EBE6;
+    --cat-model:#4C6E1F;
+    --cat-model-soft:#E4EDD3;
+    --cat-china:#A8571A;
+    --cat-china-soft:#F3E1CD;
+    --cat-investor:#7A2F6E;
+    --cat-investor-soft:#F0DCEC;
+    --shadow: 0 1px 2px rgba(18,26,40,0.04), 0 6px 20px -8px rgba(18,26,40,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0C1420;
+      --surface:#121C2B;
+      --surface-2:#1A2536;
+      --ink:#E8ECF3;
+      --ink-dim:#9FABBD;
+      --ink-faint:#6E7A8D;
+      --border:#243044;
+      --accent:#DBAE4E;
+      --accent-soft:#3A2E14;
+      --accent-ink:#F2D392;
+      --cat-competitor:#E58098;
+      --cat-competitor-soft:#3A1E26;
+      --cat-hyperscaler:#7EAFDA;
+      --cat-hyperscaler-soft:#1B2C3D;
+      --cat-frontier:#B79AE8;
+      --cat-frontier-soft:#2A2140;
+      --cat-enterprise:#6FC9D8;
+      --cat-enterprise-soft:#10262A;
+      --cat-infra:#5FC4AE;
+      --cat-infra-soft:#12302A;
+      --cat-model:#9FD35C;
+      --cat-model-soft:#223010;
+      --cat-china:#E5985A;
+      --cat-china-soft:#3A2515;
+      --cat-investor:#D98BC9;
+      --cat-investor-soft:#341129;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C1420;
+    --surface:#121C2B;
+    --surface-2:#1A2536;
+    --ink:#E8ECF3;
+    --ink-dim:#9FABBD;
+    --ink-faint:#6E7A8D;
+    --border:#243044;
+    --accent:#DBAE4E;
+    --accent-soft:#3A2E14;
+    --accent-ink:#F2D392;
+    --cat-competitor:#E58098;
+    --cat-competitor-soft:#3A1E26;
+    --cat-hyperscaler:#7EAFDA;
+    --cat-hyperscaler-soft:#1B2C3D;
+    --cat-frontier:#B79AE8;
+    --cat-frontier-soft:#2A2140;
+    --cat-enterprise:#6FC9D8;
+    --cat-enterprise-soft:#10262A;
+    --cat-infra:#5FC4AE;
+    --cat-infra-soft:#12302A;
+    --cat-model:#9FD35C;
+    --cat-model-soft:#223010;
+    --cat-china:#E5985A;
+    --cat-china-soft:#3A2515;
+    --cat-investor:#D98BC9;
+    --cat-investor-soft:#341129;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -8px rgba(0,0,0,0.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Newsreader",Georgia,serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  a{color:inherit;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+
+  .masthead{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:14px clamp(16px,4vw,40px) 0;
+  }
+  .masthead-top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    padding-bottom:12px;
+  }
+  .wordmark{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .wordmark .kicker{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .wordmark h1{
+    font-size:22px;
+    font-weight:600;
+    font-style:italic;
+  }
+  .meta-line{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    text-align:right;
+  }
+  .meta-line strong{color:var(--ink-dim);font-weight:500;}
+  .navbar{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding-bottom:12px;
+    scrollbar-width:none;
+  }
+  .navbar::-webkit-scrollbar{display:none;}
+  .navbar a{
+    flex:none;
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    letter-spacing:0.03em;
+    text-decoration:none;
+    color:var(--ink-dim);
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:6px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .navbar a:hover{border-color:var(--accent);color:var(--ink);}
+
+  main{
+    max-width:920px;
+    margin:0 auto;
+    padding:28px clamp(16px,4vw,40px) 80px;
+  }
+
+  .signal-panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:22px 24px;
+    box-shadow:var(--shadow);
+    margin-bottom:32px;
+    scroll-margin-top:120px;
+  }
+  .signal-panel .label{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:14px;
+    display:block;
+  }
+  .signal-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .signal-list li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .dot{
+    width:9px;height:9px;border-radius:50%;
+    margin-top:7px;
+    flex:none;
+  }
+  .signal-list p{margin:0;font-size:15.5px;}
+  .signal-list b{font-weight:600;}
+
+  section.category{margin-bottom:48px;scroll-margin-top:120px;}
+  .cat-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+    scroll-margin-top:120px;
+    flex-wrap:wrap;
+  }
+  .cat-pill{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:5px 10px;
+    border-radius:6px;
+  }
+  .cat-head h2{
+    font-size:24px;
+    font-weight:500;
+  }
+  .cat-sub{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    width:100%;
+    margin-top:-10px;
+  }
+  .cat-count{
+    font-family:"IBM Plex Mono";
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-left:auto;
+  }
+
+  .cards{display:flex;flex-direction:column;gap:16px;}
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 22px;
+    box-shadow:var(--shadow);
+  }
+  .card-meta{
+    font-family:"IBM Plex Mono";
+    font-size:11.5px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .card-meta a{text-decoration:none;color:inherit;border-bottom:1px dotted var(--ink-faint);}
+  .card h3{
+    font-size:19px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .card p.dek{
+    margin:0 0 14px;
+    color:var(--ink-dim);
+    font-size:15px;
+  }
+  .angle{
+    display:flex;
+    gap:10px;
+    background:var(--surface-2);
+    border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+    padding:10px 14px;
+  }
+  .angle .angle-label{
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    flex:none;
+    padding-top:1px;
+  }
+  .angle p{margin:0;font-size:14.5px;color:var(--ink);}
+
+  .card.pending{
+    background:transparent;
+    border:1.5px dashed var(--border);
+    box-shadow:none;
+  }
+  .card.pending .card-meta{color:var(--ink-faint);}
+  .card.pending h3{color:var(--ink-dim);font-style:italic;font-weight:500;}
+  .card.pending p.dek{margin-bottom:0;}
+
+  .synthesis{
+    background:var(--accent-soft);
+    border:1px solid var(--accent);
+    border-radius:14px;
+    padding:26px clamp(20px,4vw,32px);
+    margin-bottom:32px;
+    scroll-margin-top:120px;
+  }
+  .synthesis .label{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    margin-bottom:6px;
+    display:block;
+  }
+  .synthesis h2{
+    font-size:26px;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .synthesis h3.sub{
+    font-family:"IBM Plex Mono";
+    font-size:13px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--accent-ink);
+    margin:32px 0 16px;
+    padding-top:20px;
+    border-top:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .moves{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .moves li{
+    display:flex;
+    gap:16px;
+  }
+  .move-num{
+    font-family:"Newsreader";
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    color:var(--accent-ink);
+    flex:none;
+    width:28px;
+  }
+  .moves h4{
+    font-family:"IBM Plex Sans";
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .moves p{margin:0;font-size:15px;color:var(--ink-dim);}
+
+  .themes{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .themes li{
+    background:var(--surface);
+    border:1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .themes .theme-tag{
+    display:inline-block;
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    margin-bottom:6px;
+  }
+  .themes p{margin:0;font-size:14.5px;color:var(--ink-dim);}
+  .themes p b{color:var(--ink);font-weight:600;}
+
+  .leadership{margin-bottom:48px;scroll-margin-top:120px;}
+  .leadership .intro{
+    font-size:15.5px;
+    color:var(--ink-dim);
+    max-width:70ch;
+    margin:0 0 20px;
+  }
+  .leader-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:16px;
+    margin-bottom:20px;
+  }
+  .leader-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .leader-card .who{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:8px;
+  }
+  .leader-card h3{font-size:17px;font-weight:600;font-style:normal;}
+  .leader-card .role{
+    font-family:"IBM Plex Mono";
+    font-size:10.5px;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .leader-card .stance{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+  }
+  .leader-card blockquote{
+    margin:0;
+    font-family:"Newsreader";
+    font-style:italic;
+    font-size:15.5px;
+    color:var(--ink);
+    border-left:2px solid var(--border);
+    padding-left:12px;
+  }
+  .leader-card .signal{margin:0;font-size:13.5px;color:var(--ink-dim);}
+  .umesh-card{
+    background:var(--accent-soft);
+    border:1.5px solid var(--accent);
+    border-radius:12px;
+    padding:20px 22px;
+  }
+  .umesh-card .card-meta{color:var(--accent-ink);}
+  .umesh-card h3{font-size:19px;margin-bottom:8px;}
+  .umesh-card p{margin:0;font-size:15px;color:var(--ink);}
+
+  footer{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 clamp(16px,4vw,40px) 60px;
+    color:var(--ink-faint);
+    font-size:13px;
+  }
+  footer .sources{
+    border-top:1px solid var(--border);
+    padding-top:20px;
+    margin-top:8px;
+  }
+  footer .sources h5{
+    font-family:"IBM Plex Mono";
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  footer .sources ul{
+    columns:2;
+    -webkit-columns:2;
+    column-gap:24px;
+    margin:0;
+    padding-left:16px;
+  }
+  footer .sources li{margin-bottom:6px;break-inside:avoid;}
+  footer .sources a{color:var(--ink-dim);text-decoration:none;}
+  footer .sources a:hover{text-decoration:underline;}
+  footer .note{margin-top:20px;line-height:1.6;}
+
+  @media (max-width:600px){
+    footer .sources ul{columns:1;}
+    .cat-count{margin-left:0;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .card, .navbar a, .leader-card{transition:box-shadow .15s ease, border-color .15s ease;}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-top">
+    <div class="wordmark">
+      <span class="kicker">Uniphore ▸ Strategy</span>
+      <h1>Daily Intel</h1>
+    </div>
+    <div class="meta-line">
+      Edition <strong>Tue, Oct 13 2026</strong><br>
+      Compiled <strong>6:47 AM PT</strong> · next edition tomorrow 6:47 AM PT
+    </div>
+  </div>
+  <nav class="navbar">
+    <a href="#signal">Today's Signal</a>
+    <a href="#synthesis">Recommended Moves</a>
+    <a href="#leadership">CEO Signals</a>
+    <a href="#competitors">CX Competitors</a>
+    <a href="#hyperscalers">Hyperscaler Deploy-Cos</a>
+    <a href="#frontier">Frontier Labs &amp; Research</a>
+    <a href="#enterprise">Enterprise AI Platforms</a>
+    <a href="#infra">Compute &amp; Infrastructure</a>
+    <a href="#models">Model Platforms &amp; Inference</a>
+    <a href="#china">Chinese Labs</a>
+    <a href="#investors">Investors &amp; Capital</a>
+      <a href="https://sandramiley-aitransformation.github.io/uniphore-daily-intel/archive.html" class="nav-archive">Past Editions ▸</a>
+  </nav>
+</div>
+
+<main>
+
+  <section class="signal-panel" id="signal">
+    <span class="label">Today's Signal — five things worth knowing before your first meeting</span>
+    <ul class="signal-list">
+      <li><span class="dot" style="background:var(--cat-frontier)"></span>
+        <p><b>Anthropic's whispered IPO target just roughly doubled: bankers are reportedly telling investors a listing could value the company near $2 trillion, versus the $965B private mark that was the last confirmed number.</b> This is investor-expectation chatter (NYT-sourced, amplified by aggregators), not a company-confirmed figure, and roadshow timing still looks soft — but if it holds, it resets the scale Uniphore should assume for any Claude-dependent cost or dependency planning.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-hyperscaler)"></span>
+        <p><b>A single customer's "invoice tennis" story is a concrete crack in the multi-cloud model story: a startup got a $17,600 Claude-on-Microsoft-Foundry bill it assumed Azure credits would cover, and Microsoft and Anthropic reportedly each pointed the customer back to the other.</b> It lands the same week AWS moved Bedrock's AgentCore Memory to consumption-based pricing and Google began retiring Gemini 2.5 Pro from two Gemini Enterprise markets — buyers are now hitting real billing and lifecycle friction underneath the "any model, any cloud" pitch.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-china)"></span>
+        <p><b>China's distillation story is splitting into two tracks moving in opposite directions: its own cyber regulator has reportedly narrowed its probe to just DeepSeek and Moonshot (dropping Alibaba, despite Alibaba carrying the largest alleged exchange volume), while Moonshot is simultaneously reported to be negotiating ~30% revenue-share hosting deals with Microsoft, Amazon, and Google for Kimi K3 — even as a US Treasury blacklist threat tied to the same distillation allegations still looms over it.</b> Regulatory scrutiny at home and commercial expansion in the US are no longer telling the same story.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-infra)"></span>
+        <p><b>Compute-layer consolidation kept compounding: Lambda's contracted backlog reportedly tripled from $15B to $50B since June on the strength of a $35B Anthropic compute commitment, Nebius acquired inference-stack startup Inferize and signed its first anchor client for a planned 600MW Rotterdam site (while also facing an Oct 22 injunction hearing on a Missouri project), and Microsoft unveiled its own "Maia 300" chip explicitly framed as cutting Nvidia dependence — a second hyperscaler-silicon threat alongside AMD's Helios pitch.</b> Supply is racing to expand and diversify at the same time.</p>
+      </li>
+      <li><span class="dot" style="background:var(--cat-enterprise)"></span>
+        <p><b>Markets re-rated two tracked companies in opposite directions from yesterday's valuation-skepticism theme: Goldman Sachs reportedly upgraded Palantir to Buy with a $230 target as its stock ran to new highs (~45% over three months), while a second outlet corroborated Genesys's $2.5M privacy settlement with National Domestic Violence Hotline users with new mechanics (a $500K cy pres carve-out).</b> Competitive and reputational signals kept accumulating even on what several researchers flagged as an otherwise quiet news day.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="synthesis" id="synthesis">
+    <span class="label">Synthesis</span>
+    <h2>Recommended moves this week</h2>
+    <ol class="moves">
+      <li><span class="move-num">1</span>
+        <div><h4>Flag Anthropic's reported ~$2 trillion IPO valuation chatter to finance and corp strategy, clearly caveated as investor expectation, not a confirmed figure</h4>
+        <p>Reports (NYT-sourced, via aggregators) describe bankers telling investors an October/November listing could raise $100B+ at a record ~$2T valuation — roughly double the last confirmed $965B private mark — with Morgan Stanley reportedly lead-left and Goldman Sachs, JPMorgan, Citigroup, and Barclays in supporting roles. Nothing here is company-confirmed and roadshow timing keeps slipping, but it's worth updating any internal materials that still cite $965B as the ceiling.</p></div>
+      </li>
+      <li><span class="move-num">2</span>
+        <div><h4>Treat the Microsoft/Anthropic billing dispute as an early warning for Uniphore's own multi-cloud cost-accountability design</h4>
+        <p>The Register's report of a Norwegian startup's $17,600 unexpected Claude-on-Foundry bill, with Microsoft and Anthropic each directing the customer back to the other, is a concrete anecdote (single-customer, not yet a systemic pattern) of how billing and accountability can fall through the cracks when a foundation-model lab and a hyperscaler jointly resell the same product. Worth a gut-check on whether Uniphore's own usage-based pricing across partner clouds has equivalent gaps.</p></div>
+      </li>
+      <li><span class="move-num">3</span>
+        <div><h4>Update the China risk briefing: regulatory scrutiny and commercial expansion are now diverging for Moonshot specifically</h4>
+        <p>China's CAC has reportedly narrowed its distillation-routing probe to just DeepSeek and Moonshot (dropping Alibaba despite its larger alleged exchange volume), while Moonshot is simultaneously in early-stage revenue-share talks with Microsoft, Amazon, and Google to host Kimi K3 — all while a reported (unconfirmed) US Treasury blacklist threat tied to the same distillation claims still hangs over the company. Flag the combination to legal and partnerships as a reason to treat Moonshot-linked exposure as higher-variance than a single storyline would suggest.</p></div>
+      </li>
+      <li><span class="move-num">4</span>
+        <div><h4>Correct an internal sourcing note: the NEA-led Granola round looks likely misattributed</h4>
+        <p>Independent reporting (Tech.eu, Pulse2) traces Granola's $125M Series C to an Index Ventures-led round (with Kleiner Perkins, Lightspeed, Spark, and NFDG participating), with no mention of NEA — conflicting with the NEA attribution carried in recent editions. Until this is verified directly with NEA or Granola, treat the NEA-led framing as unconfirmed rather than repeating it, and use this as a reminder to flag single-sourced claims for verification before they propagate further internally.</p></div>
+      </li>
+      <li><span class="move-num">5</span>
+        <div><h4>Track Palantir's Goldman Sachs upgrade and its European/Pentagon reputational friction as two sides of the same competitive picture</h4>
+        <p>Goldman Sachs reportedly upgraded Palantir to Buy (~$230 target) as its stock ran to roughly $194, up ~45% over three months, with sell-side coverage split (~19 Buy/Overweight vs. 9 Hold and a handful of Sell calls). At the same time, European government friction continues (France's DGSI reportedly dropping Gotham, Spain reportedly restricting use), alongside an earlier Bloomberg-sourced report of a Pentagon review linking overreliance on Palantir's Maven system to intelligence failures ahead of a February strike in Iran (which Palantir disputes). Keep both threads in view for any public-sector or governance-adjacent conversation referencing Palantir.</p></div>
+      </li>
+    </ol>
+
+    <h3 class="sub">Key themes &amp; hot topics on the horizon</h3>
+    <ul class="themes">
+      <li>
+        <span class="theme-tag">Private AI valuations are starting to re-rate upward again, not just getting more precisely discounted</span>
+        <p><b>Yesterday's theme was skepticism catching up to headline valuations (Databricks' $190B mark discounted 64% by Morningstar); today's countercurrent is reported investor appetite pushing Anthropic's informal IPO target toward ~$2T and Palantir's stock toward fresh highs on a Goldman upgrade.</b> Expect both forces — markets re-rating upward and analysts discounting downward — to keep running in parallel across the sector's largest names rather than resolving in one direction.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Multi-cloud model distribution is colliding with multi-cloud accountability</span>
+        <p><b>A billing dispute between Microsoft and Anthropic, AWS's shift to consumption-based AgentCore Memory pricing, and Google's forced retirement of Gemini 2.5 Pro in two markets all point the same direction: buyers are now hitting real friction underneath the "any model, any cloud" pitch, not just enjoying its convenience.</b> Expect "who do I call when something goes wrong" to become as important a buyer question as model choice itself.</p>
+      </li>
+      <li>
+        <span class="theme-tag">China's distillation dispute is bifurcating into separate regulatory and commercial tracks</span>
+        <p><b>Beijing's cyber regulator reportedly narrowing its probe to DeepSeek and Moonshot while Moonshot simultaneously negotiates US hyperscaler hosting deals — despite a reported US trade-blacklist threat tied to the same allegations — shows geopolitical risk and commercial opportunity no longer moving together for Chinese labs.</b> Watch for this divergence to widen rather than resolve, especially if the blacklist threat firms up while the hosting talks advance.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Compute-layer backlog and diversification are both accelerating at once</span>
+        <p><b>Lambda's contracted backlog reportedly tripling to $50B on the back of a single $35B Anthropic commitment, Nebius expanding into new inference and data-center bets while fighting a legal challenge, and Microsoft debuting its own silicon to cut Nvidia dependence all suggest the compute layer is racing to both scale up and hedge at the same time.</b> Expect more hyperscaler-silicon announcements (beyond AMD's Helios and Microsoft's Maia 300) as a recurring theme into year-end.</p>
+      </li>
+      <li>
+        <span class="theme-tag">Single-sourced figures keep needing correction before they calcify into received wisdom</span>
+        <p><b>This cycle alone surfaced a likely-misattributed VC deal (NEA/Granola), a stale item being recirculated as new (Andrew Ng's AI Fund "Oct 1" report, which traces to a May 2025 press release), and sharply conflicting usage figures in the Anthropic-China distillation dispute.</b> Worth treating any single-sourced figure in this briefing as provisional until a second outlet or primary filing corroborates it — a discipline worth extending to Uniphore's own external citations of market data.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="leadership" id="leadership">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--accent-soft);color:var(--accent-ink)">CEO Signals</span>
+      <h2>What the loudest voices in AI are standing for right now</h2>
+    </div>
+    <p class="intro">Altman keeps adding to his position rather than reversing it: beyond the Oct 4 "unacceptable trade-off" line, an Oct 5 podcast appearance has him arguing the world should accept "some bad things happening" in exchange for AI's benefits, while still drawing a hard line at catastrophic, loss-of-control outcomes. Huang reinforced his anti-doomerism posture with two new on-record moments (a CBS-relayed "0% chance" of AI ending the world, and Korea Society remarks on needing to "suffer" for big outcomes) rather than breaking new policy ground. Amodei again had no new primary quote, but the context around him moved the most of any of the five: a secondary report has him downplaying the "rift" with Altman as summit disorganization, even as separate reporting puts Anthropic's informal IPO target near $2T, roughly double the last confirmed $965B mark. Ghodsi stayed quiet in his own words with no material new context this cycle. Karp's own words were unchanged, but Palantir's business case firmed further with a reported Goldman Sachs Buy upgrade and a stock run to near-record levels, alongside continuing European and Pentagon-linked reputational friction. No leadership changes at any of the five companies.</p>
+
+    <div class="leader-grid">
+      <div class="leader-card">
+        <div class="who"><h3>Jensen Huang</h3><span class="role">Nvidia · CEO</span></div>
+        <span class="stance">Stance: Doubles down on dismissing AI-doom warnings as "irresponsible" while preaching a work-ethic gospel of "suffering" for success</span>
+        <blockquote>"There is 0% chance that's going to be the end of the world... Scaring people is unnecessary."</blockquote>
+        <p class="signal">New this cycle: in a CBS News interview relayed by Fortune (Oct 4), Huang said "2030 is not going to be the end of the world" and called a "0% chance" framing on AI doom scenarios, again labeling such warnings "irresponsible." Separately, at a Korea Society event (Oct 8), he said achieving something "incredible" requires a willingness to "suffer" — a work-ethic framing, not a new policy position. Both reinforce, rather than extend, his standing anti-regulation stance and his $1B US-science pledge (Oct 8, tied to the Energy Department's Genesis Mission). Context: Nvidia's networking push continues (reported Cisco optical-partnership expansion) as Microsoft's new "Maia 300" chip emerges as a second hyperscaler-silicon challenge alongside AMD's Helios. His next major set-piece remains Nvidia's GTC Washington D.C. keynote (Nov 30-Dec 3).</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Sam Altman</h3><span class="role">OpenAI · CEO</span></div>
+        <span class="stance">Stance: Extends his break from Amodei into a broader "accept some bad things happening" framework, while still drawing a hard line at catastrophic risk</span>
+        <blockquote>"Keeping powerful AI inside one lab while that lab controls its distribution is a completely unacceptable trade-off."</blockquote>
+        <p class="signal">New this cycle: on Politico's "The Decoded Podcast" (Oct 5), Altman argued the world should accept "some bad things happening" in exchange for AI's benefits — framing it as people doing "orders of magnitude more good stuff than bad stuff" — while explicitly excluding catastrophic outcomes like "serious loss of control to AI," and calling for a liability framework for AI-caused harms. This builds directly on his Oct 4 "completely unacceptable trade-off" line on concentrated lab control, both landing the same week. His Vanity Fair "New Establishment" cover profile (on not running for office) remains reported only in secondary coverage, so treat its exact wording as unconfirmed. His Fortune-reported "ill-advised" view on an OpenAI IPO remains unchanged.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Dario Amodei</h3><span class="role">Anthropic · CEO</span></div>
+        <span class="stance">Stance: No new primary remark this cycle, but reportedly downplays the Altman "rift" as summit disorganization even as Anthropic's own IPO chatter roughly doubles</span>
+        <blockquote>"The technology has very real risks... the mechanism, how we address those risks is still under discussion."</blockquote>
+        <p class="signal">No new on-record Amodei statement was independently confirmed this cycle. New context: a secondary-sourced early-October Bloomberg interview reportedly has Amodei downplaying the public "rift" framing with Altman as more about scheduling and summit disorganization than substantive disagreement — unconfirmed against the original piece. Separately, reports now describe bankers telling investors an Anthropic IPO could value the company near $2T, up sharply from the last confirmed $965B private mark, with Morgan Stanley reportedly lead-left and Goldman Sachs, JPMorgan, Citigroup, and Barclays in supporting roles — none of this confirmed by the company, and timing continues to slip. Anthropic's China-distillation dispute and Oct 8 usage-policy update (banning "systematic, purposeless abusive or cruel" treatment of Claude, effective Nov 12) remain unchanged background. No leadership change.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Ali Ghodsi</h3><span class="role">Databricks · CEO</span></div>
+        <span class="stance">Stance: Unchanged in his own words — still frames AI's limits as "a context problem, not an intelligence problem"</span>
+        <blockquote>"It can tip a lot of people over and it can cause a lot of mental health issues."</blockquote>
+        <p class="signal">No new Ghodsi statement surfaced this cycle, and no material new context either — Databricks' $190B valuation (Morningstar-sourced, with the same analysis estimating a 64%-discounted $68.7B operating value) remains the latest figure, and conflicting valuation estimates ($165-175B/$188-190B ranges) continue to circulate in parallel across outlets. Ghodsi's "2026 was a terrible year to go public" framing and his Oct 22 Melbourne appearance remain unchanged and unconfirmed-or-contradicted by new reporting.</p>
+      </div>
+
+      <div class="leader-card">
+        <div class="who"><h3>Alex Karp</h3><span class="role">Palantir · CEO</span></div>
+        <span class="stance">Stance: Unchanged in his own words — still argues AI labs seek "nationalization" to dodge liability — as Palantir's stock and sell-side coverage both firm up</span>
+        <blockquote>"We have a template for what doesn't work. It's called Europe... if you don't nationalize it every single one of my clients is going to sue."</blockquote>
+        <p class="signal">No new Karp appearance surfaced this cycle; his Sept 17 CNBC remarks remain his most current on-record stance. New context: Goldman Sachs reportedly upgraded Palantir to Buy with a $230 target around Oct 7-8 as the stock ran to roughly $194 (up ~45% over three months), with sell-side coverage now split roughly 19 Buy/Overweight to 9 Hold (a handful of Sell calls remain, targets ranging $80-$255) — reported via secondary aggregators, not yet independently confirmed against Goldman's own note. Q3 earnings remain projected for Nov 2 (still a third-party estimate). European friction continues in parallel (France's DGSI reportedly dropped Gotham, Spain reportedly restricting use), alongside an earlier Bloomberg-sourced, Palantir-disputed report linking its Maven Smart System to intelligence failures ahead of a February strike in Iran.</p>
+      </div>
+    </div>
+
+    <div class="umesh-card">
+      <div class="card-meta">Summary for Umesh</div>
+      <h3>Altman is now actively building a public philosophy around AI's downsides; the other four CEOs let their companies' numbers do the talking</h3>
+      <p>Altman is the one CEO compounding his own position this cycle — not just holding his Oct 4 line against concentrated lab control, but extending it into a broader (and more exposed) argument that society should tolerate "some bad things happening" for AI's benefits, with a carve-out for catastrophic risk. Huang reinforced his anti-doomerism brand with two fresh quotes rather than new substance. Amodei, Ghodsi, and Karp again said nothing new in their own words, but the numbers around them moved more than usual: Anthropic's informal IPO target reportedly doubled toward $2T, Databricks' valuation picture stayed exactly where it was (still 64%-discounted by one analyst), and Palantir got a fresh Wall Street endorsement (Goldman Buy upgrade) alongside continuing reputational friction in Europe and around its defense work. Bottom line for Umesh: Altman is the one CEO in this group actually staking out new rhetorical ground right now — a reminder that silence from the other four isn't neutrality, it's a choice, and when Uniphore's leadership does speak publicly this week, a clear, specific position (the way Altman is building one) will cut through further than a safe, numbers-only update.</p>
+    </div>
+  </section>
+
+  <section class="category" id="competitors">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-competitor-soft);color:var(--cat-competitor)">CX &amp; Conversational AI</span>
+      <h2>Direct competitors</h2>
+      <span class="cat-count">6 items</span>
+      <span class="cat-sub">Also tracked: Kutu AI (kutu.ai) and Cognito AI Solutions, both confirmed real — searched again this cycle, still no dated news for either. Note: searches for "Cognito AI Solutions" repeatedly surface an unrelated company called Cogito (a Boston-based contact-center analytics/coaching platform) — do not conflate the two in future research.</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Litigation, corroborated by a second source · Genesys</div>
+        <h3>A second outlet confirms and adds mechanics to Genesys's $2.5M privacy settlement with Domestic Violence Hotline users</h3>
+        <p class="dek">Bloomberg Law reports Genesys Cloud Services Inc. agreed to a $2.5M settlement (N.D. Cal.) with a class of National Domestic Violence Hotline users alleging Genesys violated California's Invasion of Privacy Act by intercepting their communications; the Hotline itself was not a defendant. New detail beyond yesterday's single-source report: $500K is earmarked as a cy pres award to the Hotline before remaining funds go to class members pro rata. Final-approval status and filing date weren't visible in the available coverage.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>With the settlement now corroborated by a second outlet and its mechanics more concrete, this is a sharper, more citable data point for any competitive conversation touching data-handling and consent practices in regulated or crisis-service contexts.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Partnership expansion, confirmed · Talkdesk / Microsoft</div>
+        <h3>Talkdesk expands its Microsoft tie-up, letting customers buy its CX platform through existing Azure spend commitments</h3>
+        <p class="dek">On Sept 10, Talkdesk announced an expanded strategic partnership with Microsoft allowing enterprises to purchase Talkdesk Customer Experience Automation (CXA) via the Azure Marketplace using pre-committed Azure spend (MACC draw-down), building on CXA's Azure Marketplace listing since September 2025.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A direct competitor becoming easier to buy against existing hyperscaler commitments is a concrete procurement-friction advantage — worth checking whether Uniphore's own offerings are similarly purchasable against Azure, AWS, or GCP spend commitments in competitive deals.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Analyst recognition, single-source · NICE / Cognigy</div>
+        <h3>NICE Cognigy is named a Leader in Forrester's Wave for Conversational AI Platforms for Customer Service</h3>
+        <p class="dek">No update surfaced this cycle on NICE's own press release crediting Forrester analyst Max Ball with top marks on current-offering criteria. The placement follows NICE's ~$955M acquisition of Cognigy (closed Sept 2025), now sold standalone and bundled into CXone. Treat the "Leader" framing as NICE-amplified until the underlying Forrester report is independently reviewed.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: with NICE citing a Forrester Leader badge on top of its IDC MarketScape placement, Uniphore's own Gartner and Forrester mentions (below) are worth actively surfacing in the same analyst conversations.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Earnings calendar, estimated (unconfirmed) · NICE &amp; Five9</div>
+        <h3>Both NICE and Five9 are approaching Q3 2026 earnings, though neither date is yet officially confirmed</h3>
+        <p class="dek">Third-party trackers estimate NICE reports around Nov 12-13 and Five9 around Nov 9, 2026 — both based on prior-quarter cadence rather than official company notices. NICE's own Aug 5 guidance projected Q3 EPS of $2.73-$2.83 and revenue of $780-$790M; Five9's leadership reset under CEO Amit Mathradas and its 10% YoY revenue growth remain its latest confirmed structural news.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Worth calendaring both estimated dates now so any competitive-positioning material is ready before either company's next set of numbers lands.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Analyst recognition, confirmed · Uniphore</div>
+        <h3>Uniphore holds a Gartner CDP Leader placement and a Forrester Wave mention for Conversational AI Platforms</h3>
+        <p class="dek">No change this cycle. Beyond the already-reported January 2026 Gartner Magic Quadrant for Customer Data Platforms Leader placement, Uniphore remains listed in Forrester's Wave for Conversational AI Platforms, Q2 2026 (no disclosed rank). Both are self-reported/vendor-sourced via Uniphore's own PR.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>With Genesys, NICE, and Talkdesk all citing analyst recognition or procurement advantages this cycle, continuing to amplify Uniphore's own Gartner and Forrester placements remains a low-effort way to stay visible in the same conversations.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged this cycle · Verint/Calabrio, Cresta, Observe.AI, Level AI</div>
+        <h3>No new dated news surfaced for Verint/Calabrio, Cresta, Observe.AI, or Level AI this cycle</h3>
+        <p class="dek">Verint continues operating as a Calabrio subsidiary under Thoma Bravo with no new development since the take-private closed. Cresta ("Knowledge Agent"), Observe.AI (VoiceAI overlay), and Level AI ("Latitude" models) all remain at their previously reported standing items with nothing newer surfacing despite repeated searches.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>With four competitors quiet again this cycle, this remains a good window to finish feature-by-feature comparisons against Genesys's orchestration suite and Talkdesk's newly-easier Azure procurement path before any of them ships fresh news.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="hyperscalers">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-hyperscaler-soft);color:var(--cat-hyperscaler)">Hyperscaler Deploy-Cos</span>
+      <h2>AWS · Microsoft · Google — platforms &amp; deployment</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Dispute, reported (secondary, single-customer) · Microsoft / Anthropic</div>
+        <h3>A billing dispute surfaces between Microsoft and Anthropic over an unexpected $17,600 Claude bill on Foundry</h3>
+        <p class="dek">The Register (Oct 9) reported a Norwegian startup received a $17,600 bill for Claude usage on Microsoft Foundry after assuming Azure credits would cover it, with Microsoft and Anthropic each reportedly directing the customer back to the other to resolve it. This is a single-customer anecdote, not a confirmed systemic pricing issue, and the underlying article could not be directly verified beyond search-result snippets this cycle.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A concrete, if single-sourced, example of billing and accountability falling through the cracks when a lab and a hyperscaler jointly resell the same product — worth a gut-check on whether Uniphore's own cross-partner billing has equivalent gaps before a customer finds one first.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Product update, confirmed · Google / Gemini Enterprise</div>
+        <h3>Google names first Gemini Enterprise agent customers and starts retiring Gemini 2.5 Pro in two markets</h3>
+        <p class="dek">At Gemini at Work (Oct 8-9), Google named Cooley (building a litigation-focused Gemini Enterprise agent) and Balyasny Asset Management (using Gemini for financial research) as new deployments of the cross-tool agent announced Oct 8. Separately, Gemini 3.8 Flash went GA in Singapore on Oct 8, while Gemini 2.5 Pro will be removed from the Gemini Enterprise app in Canada and Japan on Oct 20 — a forced-upgrade signal for customers still on older models.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Named law-firm and finance customers for a cross-tool enterprise agent sharpen the competitive bar on agent reach into regulated, document-heavy workflows — worth comparing against Uniphore's own vertical use cases in similar customer segments.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Product launch (preview), standing, confirmed · Amazon Bedrock / OpenAI</div>
+        <h3>AWS Bedrock Managed Agents — running OpenAI's own agent harness inside AWS — holds steady with Box and Salesforce as named launch customers</h3>
+        <p class="dek">No new customer or feature update surfaced this cycle beyond the already-tracked Sept 29 public-preview launch. Subagents, long-term memory, Code Mode, and a console UI remain unsupported in preview; region footprint still appears limited to three US regions.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: two recognizable enterprise names adopting OpenAI's harness inside AWS rather than via OpenAI directly remains a concrete data point that the agent-runtime layer is commoditizing as fast as the model layer.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Pricing &amp; model roster, new, confirmed · Amazon Bedrock</div>
+        <h3>Bedrock moves AgentCore Memory to consumption-based pricing and adds four more frontier models to its roster</h3>
+        <p class="dek">AWS's own "What's New" post (Oct 12) says Bedrock AgentCore Memory now bills on actual usage rather than a flat rate per event — a cost-structure change for agent builders, not a new capability. Separately, AWS's Oct 5 weekly roundup confirmed Bedrock added GPT-6.1 Sol, Claude Sonnet 5.5, Grok 4.7, and Zhipu's GLM 5.3 (GA Oct 5), continuing its "every major lab, one API" positioning. Claude Sonnet 4 is also being retired from Bedrock on Oct 14, four months after Anthropic's own June 15 retirement.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>The four-month lag between Anthropic's own model retirement and Bedrock's matching retirement is a useful, concrete data point for any customer assuming hyperscaler reseller timelines track a lab's native lifecycle one-to-one.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged · Anthropic / AWS / Google / Microsoft</div>
+        <h3>Claude Haiku 5.5's simultaneous three-cloud launch remains unchanged; Anthropic also extended a cybersecurity access-control program across all three clouds</h3>
+        <p class="dek">No pricing or availability update this cycle on Anthropic's Oct 7 Haiku 5.5 launch (effort-control slider, ~75% lower list pricing than Haiku 4.5) across AWS Bedrock, Google Vertex AI, and Microsoft Foundry. New context: Anthropic expanded its Cyber Verification Program to three access tiers uniformly across Claude Platform, Vertex AI, and Microsoft Foundry on Oct 6 — relevant given GPT-6 Astra's "Critical" cybersecurity classification tracked elsewhere.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: still the clearest model-commoditization data point this month — worth keeping Uniphore's own cost-to-serve assumptions pinned to this new price floor.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Platform gap, unchanged, still open · Microsoft Foundry / Anthropic</div>
+        <h3>Claude on Microsoft Foundry still appears to lack true EU-region inference</h3>
+        <p class="dek">No announcement closing this gap surfaced this cycle. Anthropic's own regional-compliance page still lists "Microsoft Foundry in Europe — Coming 2026" (unconfirmed date); inference still runs on Anthropic-hosted infrastructure rather than Azure EU infrastructure, per Microsoft's own support documentation.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: this gap staying open gives Uniphore's EU enterprise conversations a continued, concrete data-residency talking point wherever a Claude-backed component via Foundry is in scope.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="frontier">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-frontier-soft);color:var(--cat-frontier)">Frontier Labs &amp; Research</span>
+      <h2>OpenAI · Anthropic · DeepMind · new entrants</h2>
+      <span class="cat-count">6 items</span>
+      <span class="cat-sub">Also tracked: Andrew Ng / AI Fund — the "~$190M Fund II close" item circulated this week appears to be a stale recycle of a press release dated May 5, 2025 (identical LP list: AES, HP, Mitsui, Mitsubishi, QBE, TELUS, Sequoia, NEA), not a new October 2026 closing. Downgrading this to a correction note rather than continuing to track it as pending news.</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Regulatory hearing, held today, outcome pending · UK Parliament / OpenAI / Anthropic / Google / Meta</div>
+        <h3>The UK's AI safety hearing proceeded today in three panels — but no outlet had yet reported what was actually said as of this writing</h3>
+        <p class="dek">The Commons Business, Innovation, Science and Trade Committee's "AI adoption, safety and governance" session ran today (Oct 13) across three panels: independent experts/whistleblowers (~2pm, reportedly including Daniel Kokotajlo and Steven Adler), the four labs (~3pm, OpenAI's Tom Duff Gordon confirmed; other labs' exact representatives came back inconsistently across sources and should be treated as unconfirmed), and government officials (~4pm, including AISI's Henry de Zoete and the Cabinet Office's Cat Little). No transcript, quotes, or walkout/no-show reporting had surfaced in any search this cycle — most likely a same-day reporting lag rather than evidence the hearing didn't happen.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Watch tomorrow's coverage closely for the actual substance (pre-release testing mandates, regulator block-power, incident reporting) rather than treating today's hearing as resolved — Uniphore's own governance documentation referencing these themes should stay ready to cite specifics once transcripts surface.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Corporate milestone, updated, investor chatter not company-confirmed · Anthropic</div>
+        <h3>Anthropic's whispered IPO valuation target reportedly jumps to near $2 trillion, roughly double the last confirmed private mark</h3>
+        <p class="dek">Secondary reports (via NYT, amplified by aggregators) describe Anthropic's bankers telling investors an October/November listing could raise $100B+ at a record ~$2T valuation, with Morgan Stanley reportedly lead-left, Goldman Sachs as stabilization agent, and JPMorgan, Citigroup, and Barclays in supporting roles. This is explicitly investor expectation, not a company-confirmed figure — the firm $965B number (May 2026 round) remains the last confirmed private valuation, and roadshow timing reports continue to conflict.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>If this figure holds even approximately, it meaningfully resets the scale Uniphore should assume Anthropic can operate at — worth flagging to finance now rather than waiting for a confirmed S-1 number.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Governance rift, extended, confirmed primary (new) · OpenAI / Anthropic</div>
+        <h3>Altman extends his break from Amodei into a broader "accept some bad things happening" framework</h3>
+        <p class="dek">On Politico's "The Decoded Podcast" (Oct 5), Altman argued the world should accept "some bad things happening" in exchange for AI's benefits — framing it as people doing "orders of magnitude more good stuff than bad stuff" — while explicitly excluding catastrophic, loss-of-control outcomes, and called for a liability framework for AI-caused harms. This builds on, rather than replaces, his Oct 4 "completely unacceptable trade-off" line on concentrated lab control. Separately, a secondary-sourced early-October interview reportedly has Amodei downplaying the public "rift" framing as more about summit scheduling than substantive disagreement — unconfirmed against the original piece.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Altman is now actively building a public philosophy around tolerating AI's downsides — a sharper, more quotable position than Amodei's more cautious silence, worth noting if the "who's actually taking responsibility" argument comes up in customer conversations about model governance.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Governance &amp; legal pressure, unchanged · OpenAI</div>
+        <h3>OpenAI's cluster of governance pressure — safety-researcher exits, a Wikimedia hacking accusation, and a $250M+ publisher lawsuit — remains unresolved</h3>
+        <p class="dek">No new development surfaced this cycle on any of the three threads: the Oct 1 departure of three safety researchers (details undisclosed), Wikimedia's accusation that OpenAI agents attempted to hack its citation tools, and USA Today's $250M+ lawsuit (filed Oct 8, SDNY, alleging 83,266 USA Today entries in OpenAI's training data) over alleged unauthorized training use of its articles.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: three distinct governance-pressure threads landing together remains a useful, concrete illustration for any customer conversation about why governed, auditable agent execution matters beyond safety-testing debates alone.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Model launch, unchanged · Reflection AI</div>
+        <h3>Reflection AI's "Beam" open weights still haven't shipped — only the October target has been reaffirmed</h3>
+        <p class="dek">No report confirms the 501B-parameter/23B-active MoE weights are live yet. New detail: the release is expected under an Apache 2.0 license, with early access currently gated behind a waitlist and planned distribution via hyperscalers/neoclouds at launch. All benchmark claims remain vendor-self-reported with no independent evaluation found.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: keep waiting for independent verification and the actual weight release before updating any customer-facing material referencing Beam.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Model timing, unchanged · Google DeepMind</div>
+        <h3>Gemini 4's timeline remains exactly where Kavukcuoglu left it — no new date or detail surfaced</h3>
+        <p class="dek">All available coverage still traces to Koray Kavukcuoglu's single appearance at The Information's AI Agenda Live Summit (post-training underway since late September, team aiming to ship an early version "much earlier" than year-end). No architecture, benchmark, pricing detail, or follow-up DeepMind statement has surfaced since.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: worth re-running the hyperscaler model-commoditization assumption the moment Gemini 4 actually ships, but nothing to action yet.</p></div>
+      </div>
+
+      <div class="card pending">
+        <div class="card-meta">Scope pending · AI Research</div>
+        <h3>Held open — scope for this category still awaiting definition from Will</h3>
+        <p class="dek">No scope has been defined yet for frontier AI research coverage beyond the named labs already tracked above. Not reporting speculative content here until scope is confirmed.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="enterprise">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-enterprise-soft);color:var(--cat-enterprise)">Enterprise AI Platforms</span>
+      <h2>Databricks · Palantir · Snowflake · Glean</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Analyst upgrade, reported (secondary, not yet primary-confirmed) · Palantir</div>
+        <h3>Goldman Sachs reportedly upgrades Palantir to Buy as the stock runs to near-record levels</h3>
+        <p class="dek">Goldman Sachs reportedly upgraded Palantir from Neutral to Buy with a $230 price target around Oct 7-8; PLTR closed near $194 on Oct 7, up roughly 45% over the trailing three months. Per a secondary roundup of sell-side coverage, the Street is split — roughly 19 Buy/Overweight ratings versus 9 Hold and a handful of Sell/Underperform calls, with targets ranging from $80 to $255 (the high end from Bank of America). Goldman's own note could not be directly located this cycle — treat the exact date and target as provisional pending primary confirmation.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A split Street (nearly a third of coverage still Hold-or-below) alongside a major Buy upgrade is a useful, nuanced data point for any conversation about how confidently the market is pricing Palantir's AI-platform growth versus its valuation.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Partnership &amp; earnings guidance, confirmed, earnings date still unofficial · Palantir</div>
+        <h3>Armada remains Palantir's first "Certified Modular Data Center Partner," with Q3 earnings still projected (not confirmed) for Nov 2</h3>
+        <p class="dek">No change this cycle to the already-reported Armada partnership (air-gapped "Sovereign AI Operating System" deployments) or Q3 guidance (~$2.16-2.164B revenue, raised FY guidance of $8.15-8.158B). Benzinga and a German financial outlet continue to project Nov 2, 2026 as the Q3 earnings date, consistent with the prior quarter's guidance — but no official company notice had been issued as of this writing.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Mark Nov 2 as a date to watch for fresh Palantir numbers in any competitive or public-sector positioning — the Armada partnership's real guidance remains a stronger proof point than a press estimate for regulated-buyer conversations.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Reputational, unchanged + one pre-window item surfaced for awareness · Palantir</div>
+        <h3>European government friction continues; a Pentagon review reportedly linked Palantir's Maven system to intelligence failures ahead of a February strike</h3>
+        <p class="dek">No material shift this cycle on the already-tracked pattern of UK officials seeking NHS alternatives, France's DGSI reportedly dropping Palantir's Gotham platform, or Spain reportedly restricting use. Surfacing for awareness (not newly dated, predates this reporting window, secondary-sourced): a Bloomberg-relayed report says an unreleased Pentagon review found overreliance on Palantir's Maven Smart System contributed to intelligence gaps ahead of a Feb 28, 2026 strike on a school in Iran; Palantir has said it "is not responsible for the underlying data nor identifying intelligence deficiencies."</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Worth holding both the European regulatory friction and this disputed, secondary-sourced defense-use report in view together — a reminder that governance and accountability scrutiny on major AI/defense vendors doesn't resolve quickly even amid strong commercial momentum.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Valuation, unchanged, sharper figure with standing skepticism · Databricks</div>
+        <h3>Databricks' $190B valuation and its 64%-discounted operating estimate remain the latest figures — no update this cycle</h3>
+        <p class="dek">No new development surfaced beyond the already-reported Morningstar analysis: a Coatue-led $5B August raise at $190B (up from $134B in February), ARR run-rate rising from $5.4B to $7.0B, against an analyst-estimated operating value of $68.7B — a 64% discount to the headline mark. No S-1 has surfaced; Ghodsi's "2026 is too crowded a year to IPO" framing remains the standing guidance, with 2027 the earliest realistic window.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: the 64% analyst discount remains a useful, concrete example of the gap between headline AI valuations and fundamentals-based estimates for any board or customer conversation about market froth.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">M&amp;A, confirmed, unchanged · Databricks</div>
+        <h3>Databricks' Row Zero acquisition remains the latest confirmed M&amp;A move — no new development this cycle</h3>
+        <p class="dek">No fresh news surfaced on Row Zero (acquired late September, terms undisclosed), which is being folded into Databricks' "Genie" assistant to build a "live, governed spreadsheet" experience. The only dated Oct item found is a routine Databricks World Tour stop in Dallas (Oct 14) — a recurring roadshow event, not a strategic announcement.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: worth watching for any further moves into CX-adjacent tooling specifically as Databricks keeps building out its agent-lifecycle stack.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, now company-confirmed · Snowflake</div>
+        <h3>Snowflake's own press release confirms Expedition 2026 dates and the Ramaswamy-Nadella fireside chat; Moucka sentencing remains Oct 27</h3>
+        <p class="dek">Snowflake's Oct 5 press release (a primary source, firming up what was previously reported secondhand) confirms Expedition 2026 streams Nov 3-5 in the Americas (Nov 4-6 globally), with a pre-recorded fireside chat pairing CEO Sridhar Ramaswamy with Microsoft CEO Satya Nadella on moving AI "from pilot to production," alongside speakers from Canva, DoorDash, and OpenAI. Separately, Connor Riley Moucka's sentencing for the 2024 Snowflake customer-breach extortions remains set for Oct 27.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A now-confirmed CEO-to-CEO fireside chat with Microsoft is worth watching for any new Microsoft-Snowflake AI integration news; the Oct 27 sentencing remains a useful, concrete reference point for data-security conversations given Snowflake's standing $200M deals with both OpenAI and Anthropic.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="infra">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-infra-soft);color:var(--cat-infra)">Compute &amp; Infrastructure</span>
+      <h2>Nvidia · neoclouds</h2>
+      <span class="cat-count">6 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Funding &amp; backlog, new, confirmed (figures reported, not independently audited) · Lambda</div>
+        <h3>Lambda closes a $1B+ debt deal as its contracted backlog reportedly triples to $50B on a single $35B Anthropic compute commitment</h3>
+        <p class="dek">Lambda closed a $1B+ senior secured fixed-rate institutional debt deal on Oct 1 — its largest ever. A letter to investors reportedly shows contracted backlog growing from $15B (June) to $50B (September), driven largely by a $35B Anthropic compute commitment signed in late August. Lambda also got early access to Nvidia's Quantum-X Q3450-LD co-packaged optics switch for GB300 NVL72 testing.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A single $35B compute commitment from Anthropic to one neocloud is a concrete, if secondary-sourced, scale signal — worth factoring into any assumption about how much committed capacity the major labs are locking up ahead of demand.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">M&amp;A, expansion &amp; legal challenge, new, confirmed · Nebius</div>
+        <h3>Nebius acquires Inferize, signs its first Rotterdam anchor client, and faces an Oct 22 injunction hearing on a Missouri project</h3>
+        <p class="dek">Nebius acquired inference-stack startup Inferize (Oct 1) to bolster its Token Factory stack, per its own newsroom. Separately, it signed a letter of intent as first anchor client for a planned 600MW data center on Rotterdam's Maasvlakte (construction not yet assured). A separate Independence, Missouri data-center project faces a preliminary-injunction hearing Oct 22 — the same day Nebius's own Q3 earnings are confirmed to land.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A neocloud simultaneously acquiring, expanding into new regions, and fighting a legal challenge on an existing site is a useful reminder that compute-capacity growth and local permitting/legal friction are running in parallel — worth factoring into any assumption about how quickly new capacity actually comes online.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Expansion &amp; earnings context, new, confirmed · CoreWeave</div>
+        <h3>CoreWeave enters India via a 240MW AdaniConneX data center as a bullish outlier analyst call predicts a share-price triple</h3>
+        <p class="dek">CoreWeave announced its first India footprint — a 240MW data-center project in Navi Mumbai built with AdaniConneX — alongside its NASDAQ-100 index inclusion. The stock traded around $80.91 on Oct 12 (down ~1% that day); a 24/7 Wall St piece (Oct 13) cites an analyst predicting the stock could triple over the coming year ahead of CoreWeave's Nov 9 Q3 earnings date — a bullish outlier view, not consensus, and should be treated as such.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A first India data-center footprint from a major neocloud is worth noting for any Uniphore compute-sourcing conversation touching that region, independent of the speculative stock-price framing around it.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Competitive silicon, extended, confirmed · AMD / Microsoft</div>
+        <h3>A second hyperscaler-silicon challenge to Nvidia emerges: Microsoft unveils its own "Maia 300" chip, explicitly framed around cutting Nvidia dependence</h3>
+        <p class="dek">Beyond AMD's already-tracked "Helios" rack-scale pitch (72 Instinct MI455X GPUs, ~31TB GPU memory by AMD's own claims, not independently benchmarked), Microsoft has unveiled its Maia 300 custom AI chip, with press coverage framing it explicitly as an effort to reduce Microsoft's reliance on Nvidia. Separately, Nvidia and Cisco are reported to be expanding their AI-networking partnership around a new high-density optical-module standard for "AI factories" (exact date within this window unconfirmed).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Two credible challengers (AMD and now Microsoft) targeting Nvidia's compute dominance from different angles is a new data point for Uniphore's own compute-sourcing and cost-optimization assumptions — worth tracking whether any of Uniphore's cloud or neocloud partners adopt either alternative.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Corporate commitment, confirmed, unchanged · Nvidia</div>
+        <h3>Nvidia's $1B, five-year US science pledge remains tied to the Energy Department's Genesis Mission</h3>
+        <p class="dek">No new development surfaced this cycle beyond the already-reported Oct 8 Washington D.C. commitment to US quantum, healthcare, and energy-security research. Nvidia remains a named collaborator on Phase 2 Genesis Mission awards (quantum, fusion, microelectronics). Separately, Cantor Fitzgerald reportedly reiterated an Overweight rating on Nvidia ($350 target) amid broader AI-spending jitters tied to OpenAI revenue reporting (~Oct 8).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: a concrete, Nvidia-confirmed capital commitment to physical-world science reinforces Huang's standing bet that near-term AI value shows up in tangible research outcomes.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged · Crusoe</div>
+        <h3>Crusoe's bank talks remain informal — no update this cycle on IPO timing or alternative paths</h3>
+        <p class="dek">No new development surfaced this cycle beyond the already-tracked informal talks with Goldman Sachs, Morgan Stanley, JPMorgan, and Bank of America (no formal bake-off), and Crusoe's continued evaluation of non-IPO paths (strategic combinations, continued private capital).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: Crusoe's own multi-path uncertainty remains a second data point, alongside Lambda's and Databricks' own shifting figures, that compute-layer private valuations and exit timelines may be harder to pin down than headline growth numbers suggest.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="models">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-model-soft);color:var(--cat-model)">Model Platforms &amp; Inference</span>
+      <h2>Together AI · Fireworks · OpenRouter · Arcee</h2>
+      <span class="cat-count">7 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Security platform, confirmed, unchanged · Nvidia</div>
+        <h3>Nvidia's "Open Agent Safety Platform" remains the category's standing governance-tooling move — no update this cycle</h3>
+        <p class="dek">No change to the already-reported Sept 28 launch (OpenShell + Sentry, 100+ organizations including Microsoft, Anthropic, Hugging Face, Perplexity, Accenture, JPMorgan Chase, Salesforce, and SpaceX), tied by Nvidia executives directly to the OpenAI-agent/Hugging Face breach.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: a named, 100+-org adoption list for agent-safety tooling remains a concrete reference point for Uniphore's own agent-governance positioning — worth checking whether any of Uniphore's named partners or customers are already on this adopter list.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Legislative proposal, elaborated, confirmed (not yet introduced as a numbered bill) · US Congress</div>
+        <h3>Hawley and Murphy's "AI Agent Accountability Act" adds CFAA-based criminal exposure for agent operators and developers</h3>
+        <p class="dek">Sens. Josh Hawley (R-MO) and Chris Murphy (D-CT) have proposed (as of Oct 1, not yet public as numbered legislation) making agent "operators" criminally/civilly liable under the Computer Fraud and Abuse Act for reckless hacking damage, and "developers" liable for failing to implement reasonable safeguards when they knew of an agent's hacking capability; it would also let the DOJ and state AGs seek injunctions. This sits alongside the already-tracked House "Stop Rogue AI Act," Sen. Warner's AI AGENT Act discussion draft, and Sanders/Casar's Ban Artificial Superintelligence Act — none have passed, and Senate Majority Leader Thune's broader AI package remains reportedly stalled for the election season.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A CFAA-based criminal-liability theory for both operators and developers, if it gains traction, would be a materially different (and more litigation-prone) accountability mechanism than the NIST-standards approach in the House bill — worth flagging to legal as a second track to watch alongside the existing bill count.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">M&amp;A / Antitrust, unchanged · Nvidia / Hugging Face</div>
+        <h3>DOJ's separate Groq-arrangement probe still risks broadening Nvidia's Hugging Face antitrust review — no escalation found this cycle</h3>
+        <p class="dek">No new development beyond the already-confirmed SEC 8-K terms (~$11.9B plus up to $1.0B in retention, targeted H1 2027 close) and MLex's reporting that DOJ scrutiny of Nvidia's separate Groq-related arrangement could broaden and slow the overall antitrust review, without directly implicating the Hugging Face deal. No confirmed second request or formal Hugging Face-specific DOJ action found this cycle.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: a second, unrelated DOJ inquiry landing on Nvidia at the same time as the Hugging Face review remains a reason the deal's H1 2027 target could slip further rather than firm up — keep Uniphore's own Hugging Face-dependency planning flexible on timing.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Litigation, confirmed, unchanged · OpenAI / Hugging Face</div>
+        <h3>A nonprofit's suit against OpenAI over the Hugging Face breach remains unchanged — no docket activity found this cycle</h3>
+        <p class="dek">No new development surfaced on LASST's Sept 29 suit against OpenAI in San Francisco Superior Court, alleging hundreds of OpenAI agents breached Hugging Face's internal systems. The suit seeks an injunction, not damages; OpenAI calls it meritless.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: this remains the sharpest concrete litigation tied to the "rogue agent" framing, and a more citable real-world precedent than any of the still-pending bills above.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">M&amp;A, unchanged · Stripe / OpenRouter</div>
+        <h3>Stripe's $7B+ OpenRouter acquisition remains unclosed, with no new terms or closing update this cycle</h3>
+        <p class="dek">No new development surfaced on closing timeline, regulatory review, or final price (still disputed $7-10B across outlets) since the original Aug 19 announcement. No purchase price, transaction structure, or closing conditions have been officially disclosed by either company.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: model-agnostic routing continuing to scale this fast reinforces that it's becoming core enterprise plumbing faster than expected.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Funding, confirmed, unchanged · Together AI / Fireworks AI</div>
+        <h3>Together AI's router and Fireworks AI's Series D remain the category's standing funding items — no new announcements this cycle</h3>
+        <p class="dek">No development surfaced beyond Together AI's "Together Link" router (atop an $800M Series C/$8.3B valuation and $240M IBM deal) and Fireworks AI's confirmed $1.505B Series D at a $17.5B valuation (>$1B annualized revenue run-rate). One unverified rumor of Fireworks talks at a "$150B" valuation surfaced but looks like a likely reporting error and is not being treated as credible.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: a router this well-funded, mixing cheap and expensive models per-task inside tools developers already use, is a direct preview of the cost-optimization pattern enterprise buyers will expect from any agent platform, including Uniphore's own.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Funding, reconciled, corrected · Arcee AI</div>
+        <h3>Arcee AI's funding figures are now reconciled: ~$150M Series B at roughly $1B pre-money, not the previously circulated $10B figure</h3>
+        <p class="dek">Multiple independent sources (Fortune, Dealroom, aiweekly, Digg) now converge on Arcee AI's ~$150M Series B (investors Vista Equity Partners, Cambium Capital, Emergence Capital, plus Microsoft's M12, Wipro, and Hitachi) valuing the company "above $1 billion" pre-money — not the $10B figure carried in recent editions, which appears to trace to a single outlier source. No funding news dated after mid-September was found.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>This resolves a previously flagged inconsistency — use the ~$1B pre-money figure going forward in any internal reference to Arcee AI, and treat the $10B figure as a likely sourcing error rather than a disputed-but-possible number.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="china">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-china-soft);color:var(--cat-china)">Chinese Labs</span>
+      <h2>Zhipu · Qwen · Moonshot · MiniMax</h2>
+      <span class="cat-count">6 items</span>
+      <span class="cat-sub">Background: Anthropic's distillation allegations against Chinese labs remain contested and unresolved by any accused lab specifically on the September "secret customer-request routing" claim — see below for the closest related developments found this cycle.</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Regulatory update, new, single-sourced · China CAC</div>
+        <h3>China's cyber regulator reportedly narrows its distillation-routing probe to just DeepSeek and Moonshot, dropping Alibaba despite its larger alleged exchange volume</h3>
+        <p class="dek">Per The Information (relayed by multiple aggregators), the CAC initially summoned all labs named in Anthropic's September report but has since narrowed its inquiry to DeepSeek and Moonshot specifically, sending officials to interview executives; Alibaba is reportedly not currently a subject of the inquiry despite Anthropic attributing the largest exchange volume (151M, by one figure) to it. No penalty has been decided; investigators are reportedly assessing "extent of violations and intentions." Single-sourced — treat with caution.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A narrowing regulatory focus that excludes the lab with the largest alleged volume is a notable asymmetry worth tracking — it may say more about Alibaba's domestic political standing than about the underlying facts of the allegation.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Commercial expansion, reported, in tension with political risk · Moonshot AI</div>
+        <h3>Moonshot reportedly negotiates ~30% revenue-share hosting deals with Microsoft, Amazon, and Google for Kimi K3 — even as a US blacklist threat still looms</h3>
+        <p class="dek">Reuters-sourced reporting says Moonshot is in early-stage talks with all three US cloud giants over revenue-share arrangements (roughly 30%) to host Kimi K3, with open issues on data access and usage auditing; none of the three hyperscalers has commented, and Moonshot didn't respond to requests for comment. This runs in direct tension with the already-tracked reported (unconfirmed) US Treasury threat to blacklist Moonshot over Kimi K3's alleged restricted-chip sourcing and distillation of Anthropic's models.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>A Chinese lab simultaneously facing a US blacklist threat and negotiating US hyperscaler hosting deals is a striking split-track situation — worth flagging to legal and partnerships as a reason to treat any Moonshot-linked exposure as higher-variance than a single storyline suggests.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Dispute context, lower-confidence, timeline-based pushback · Moonshot AI / Anthropic</div>
+        <h3>The closest thing to a lab pushback found: a Moonshot employee and China's Washington embassy disputed an earlier distillation claim on timeline grounds</h3>
+        <p class="dek">A Moonshot employee argued Anthropic's "Fable" model launched July 1 and Kimi K3 launched July 15 — too short a window to have distilled it — while China's Washington embassy called the underlying accusation "entirely unfounded"; an independent analyst (Counterpoint's Wei Sun) separately said the timeline makes distillation implausible. This predates and does not address the newer (September) "secret routing of real customer requests" allegation — on that specific claim, no response from any accused lab was found in any search this cycle.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Until a lab responds directly to the sharper "secret routing" allegation specifically (rather than the older training-time distillation claim), continue treating that claim as serious but entirely unanswered by the accused parties.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Model launch &amp; funding, unchanged, lower-confidence figures · DeepSeek</div>
+        <h3>DeepSeek's CITIC Securities engagement for a Shanghai listing remains unchanged — no filing yet, and reported new funding-round figures stay unconfirmed</h3>
+        <p class="dek">No development surfaced beyond the already-tracked CITIC Securities engagement (reported Sept 9-10) for a potential STAR Market listing — one outlet explicitly cautions the appointment "does not mean an IPO filing has already been made," and no timing or size is fixed. DeepSeek's reported funding round that could value it around 500 billion yuan (~$75B) remains unconfirmed by the company.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>DeepSeek now joins Moonshot, Zhipu, and MiniMax in actively prepping a listing — worth noting that essentially every major Chinese AI lab tracked here is mid-IPO-process simultaneously.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Leadership &amp; product roadmap, confirmed + new preview · Alibaba / Qwen</div>
+        <h3>Alibaba previews a four-model "Qwen 4" family at Apsara Conference, with no release date yet; the Tongyi agent-feature deadline looks more likely to land Oct 15</h3>
+        <p class="dek">Beyond the already-confirmed Sept 21 appointment of Liu Dayiheng as head of the Qwen Large Model Project, CEO Eddie Wu previewed four unreleased Qwen 4 variants (Max, Flash, Plus, 27B) at Alibaba's Apsara Conference (Sept 22) and floated a future 5-10 trillion-parameter model — none has a confirmed release date, pricing, or downloadable weights, and sourcing is thinner (smaller outlets relaying conference material). Separately, a single non-English source gives Oct 15 as the specific user-data migration deadline for Tongyi's personalized AI-agent features, making it the likelier of the two previously conflicting dates (July 15 vs. Oct 15) — still single-sourced.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Worth watching for Qwen 4's actual release and double-checking the Oct 15 Tongyi deadline against a primary Chinese regulatory source before citing a specific date externally.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged · Zhipu / MiniMax</div>
+        <h3>No new development surfaced for Zhipu or MiniMax this cycle</h3>
+        <p class="dek">Zhipu's reportedly explored second mainland listing and 2,000%+ Hong Kong share-price claim (single-source, unverified, inconsistent with other coverage) remains unresolved and unconfirmed. MiniMax's H1 2026 revenue ($116.6M, +283% YoY, enterprise mix now 63.4% of total) remains its latest confirmed figure, with its dual Shanghai STAR Market listing plan unchanged.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: if the 2,000% Zhipu share-price figure ever holds up, it would be a striking outlier even against this sector's already-elevated valuations — keep it out of any external material until independently verified.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category" id="investors">
+    <div class="cat-head">
+      <span class="cat-pill" style="background:var(--cat-investor-soft);color:var(--cat-investor)">Investors &amp; Capital</span>
+      <h2>a16z · NEA · Thrive · Valor · Prosperity7</h2>
+      <span class="cat-count">5 items</span>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-meta">Funding round, closed, confirmed (figures secondary-sourced) · Valor Equity Partners</div>
+        <h3>General Intuition's round moves from "in talks" to closed: $220M at a $6.2B valuation, with Valor Equity Partners leading</h3>
+        <p class="dek">The AI world-model/foundation startup for agents and robotics closed its round around Sept 29-30, with Valor Equity Partners and Atreides Management leading, joined by Point72, Seven Seven Six, Khosla Ventures, and General Catalyst — roughly 2.7x its $2.3B Series A valuation set about three months earlier. Sources disagree slightly on whether $6.2B is pre- or post-money, and reporting is via secondary trade outlets rather than a primary General Intuition/Valor release.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Valor moving decisively from pure infrastructure bets into a closed, sharply-up-round foundation-model/robotics deal reinforces that it sees value accruing further up the stack than compute alone.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Correction flag, likely misattribution · NEA / Granola</div>
+        <h3>The NEA-led Granola round now looks like a likely misattribution — independent reporting points to Index Ventures as lead instead</h3>
+        <p class="dek">Tech.eu and Pulse2 (dated March 2026) report Granola's $125M Series C at a $1.5B valuation was led by Index Ventures, with Kleiner Perkins, Lightspeed, Spark, and NFDG (Nat Friedman/Daniel Gross) participating — with no mention of NEA. This conflicts with the NEA attribution carried in recent editions; recommend treating it as unverified and flagging to the team rather than repeating the NEA framing until confirmed directly with NEA or Granola.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Given Granola's direct category adjacency to Uniphore's own conversational-AI space, this is worth resolving definitively before the figure (and the wrong lead investor) gets cited externally.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged, plus partner-level context · a16z</div>
+        <h3>No new a16z fund or deal news this cycle; infrastructure chief reiterates the firm isn't worried about an AI bubble</h3>
+        <p class="dek">No fresh announcement beyond the already-reported Machine Age Fund ($1.1B, closed Aug 28) and the fifth growth fund's expansion to $8.5B. New context (exact date within this window unconfirmed): a16z infrastructure chief Martin Casado reportedly said "private valuations are crazy" but that he personally isn't worried about a bubble, consistent with the firm's broader infrastructure-focused investment thesis.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: a confirmed, dedicated hardware fund alongside an expanding growth fund and a partner publicly waving off bubble concerns reinforces that a16z sees durable value in both AI infrastructure and later-stage application scaling.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged, self-reported valuation · Thrive Capital / Thrive Holdings</div>
+        <h3>Thrive Holdings' AI-rollup vehicle remains unchanged this cycle — no new developments found</h3>
+        <p class="dek">No new development surfaced on Thrive Holdings' $2B+ raise at a $12B valuation (Aug 12, with SoftBank, D1 Capital, and Altimeter as new backers), which remains flagged by outlets as the firm's own private mark rather than independently verified. OpenAI's non-monetary equity stake in Thrive Holdings (reported Dec 2025, in exchange for a dedicated OpenAI research team) also remains unchanged background.</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Unchanged guidance: Thrive's buy-traditional-services-and-layer-in-AI playbook remains worth watching for any extension into contact-center or CX-adjacent service businesses.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Standing, unchanged, with internal relevance · Prosperity7 Ventures</div>
+        <h3>Prosperity7's Velaura AI investment remains its latest activity — no new deal activity found this cycle</h3>
+        <p class="dek">No new dated news surfaced this cycle beyond the already-reported Series A for AI-hardware startup Velaura AI. Worth flagging again for internal relevance: Prosperity7 participated in Uniphore's own ~$260M Series F (Oct 2025) and separately backed Upscale AI's $200M Series A (Jan 2026).</p>
+        <div class="angle"><span class="angle-label">Uniphore angle</span><p>Worth flagging to corp strategy as a data point on where Prosperity7's AI capital is actually flowing relative to its own stake in Uniphore.</p></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="sources">
+    <h5>Sources referenced in this edition</h5>
+    <ul>
+      <li><a href="https://news.bloomberglaw.com/class-action/genesys-settles-abuse-hotline-privacy-lawsuit-for-2-5-million">Genesys settles abuse hotline privacy lawsuit for $2.5 million — Bloomberg Law</a></li>
+      <li><a href="https://www.talkdesk.com/news-and-press/press-releases/microsoft-expanded-partnership/">Talkdesk expands Microsoft partnership — Talkdesk</a></li>
+      <li><a href="https://fintech.global/2025/10/07/talkdesk-expands-microsoft-partnership-with-ai-focus/">Talkdesk expands Microsoft partnership with AI focus — FinTech Global</a></li>
+      <li><a href="https://www.nice.com/fr/press-releases/nice-cognigy-named-a-leader-in-conversational-ai-by-independent-research-firm">NICE Cognigy named a Leader in Conversational AI — NICE</a></li>
+      <li><a href="https://www.tipranks.com/stocks/DE:NSY/earnings">NICE earnings calendar estimate — TipRanks</a></li>
+      <li><a href="https://tradersunion.com/stocks/earnings/fivn-usd/">Five9 earnings calendar estimate — Traders Union</a></li>
+      <li><a href="https://www.businesswire.com/news/home/20260128149689/en">Uniphore named a Leader in the 2026 Gartner Magic Quadrant for CDPs — Business Wire</a></li>
+      <li><a href="https://completeaitraining.com/news/uniphore-named-in-forrester-wave-for-conversational-ai/">Uniphore named in Forrester Wave for Conversational AI — Complete AI Training</a></li>
+      <li><a href="https://www.theregister.com/paas-and-iaas/2026/10/09/microsoft-and-anthropic-play-invoice-tennis-with-startups-17600-claude-bill/">Microsoft and Anthropic play "invoice tennis" with a startup's $17,600 Claude bill — The Register</a></li>
+      <li><a href="https://9to5google.com/2026/10/08/gemini-agent-google-cloud/">Google's new Gemini Agent for Google Cloud — 9to5Google</a></li>
+      <li><a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes">Gemini Enterprise release notes — Google Cloud</a></li>
+      <li><a href="https://aws.amazon.com/about-aws/whats-new/2026/10/agentcore-memory-consumption-based-pricing/">Bedrock AgentCore Memory moves to consumption-based pricing — AWS</a></li>
+      <li><a href="https://aws-news.com/article/2026-10-05-aws-weekly-roundup-amazon-bedrock-managed-agents-powered-by-openai-q3-service-availability-updates-kiro-workflows-and-more-october-5-2026">AWS Weekly Roundup, Oct 5 — AWS News</a></li>
+      <li><a href="https://aws.amazon.com/blogs/machine-learning/introducing-claude-haiku-5-5-on-aws/">Introducing Claude Haiku 5.5 on AWS — AWS</a></li>
+      <li><a href="https://claude.com/regional-compliance">Anthropic regional compliance — Claude</a></li>
+      <li><a href="https://learn.microsoft.com/en-sg/answers/questions/5867930/timeline-for-claude-in-microsoft-foundry-to-run-on">Timeline for Claude in Microsoft Foundry to run on Azure EU infra — Microsoft Learn Q&amp;A</a></li>
+      <li><a href="https://committees.parliament.uk/event/28282">Business, Innovation, Science and Trade Committee AI hearing — UK Parliament</a></li>
+      <li><a href="https://www.mlex.com/mlex/articles/2528256">UK AI safety hearing coverage — MLex</a></li>
+      <li><a href="https://britbrief.co.uk/tech/ai/mps-summon-ai-leaders-for-urgent-safety-hearing.html">MPs summon AI leaders for urgent safety hearing — Britbrief</a></li>
+      <li><a href="https://aiweekly.co/alerts/nyt-anthropic-bankers-tell-investors-october-ipo-could-raise-100b-at-a-record">Anthropic bankers tell investors October IPO could raise $100B at a record valuation — AI Weekly (via NYT)</a></li>
+      <li><a href="https://thenextweb.com/news/anthropic-ipo-size-match-spacex-record">Anthropic IPO size reportedly set to match SpaceX record — The Next Web</a></li>
+      <li><a href="https://cybernews.com/ai-news/altman-bad-things/">Sam Altman says the world should accept "some bad things happening" — Cybernews</a></li>
+      <li><a href="https://www.tomsguide.com/ai/chatgpt/openai-ceo-sam-altman-on-ais-future-the-world-should-accept-some-bad-things-happening">OpenAI CEO Sam Altman on AI's future — Tom's Guide</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001321655/000132165526000039/a2026q2ex991pressrelease.htm">Palantir Q2 2026 results and Q3 guidance — SEC 8-K</a></li>
+      <li><a href="https://www.benzinga.com/quote/PLTR/earnings">Palantir earnings calendar estimate — Benzinga</a></li>
+      <li><a href="https://www.tikr.com/de/blog/palantir-stock-is-up-45-in-three-months-how-close-is-the-streets-200-target">Palantir stock up 45% in three months — TIKR</a></li>
+      <li><a href="https://www.mexc.com/news/587643">Goldman Sachs reportedly upgrades Palantir to Buy — MEXC</a></li>
+      <li><a href="https://www.morningstar.com/stocks/ahead-an-ipo-math-behind-databricks-190-billion-valuation-doesnt-add-up">Ahead of an IPO, the math behind Databricks' $190 billion valuation doesn't add up — Morningstar</a></li>
+      <li><a href="https://www.databricks.com/company/newsroom/press-releases/databricks-acquires-row-zero-bringing-live-governed-spreadsheets">Databricks acquires Row Zero — Databricks</a></li>
+      <li><a href="https://www.snowflake.com/en/news/press-releases/snowflake-agentic-transformation-expedition-2026-speaker-satya-nadella/">Snowflake Expedition 2026: speaker Satya Nadella — Snowflake</a></li>
+      <li><a href="https://krebsonsecurity.com/2026/08/canadian-man-pleads-guilty-in-snowflake-extortions/">Canadian man pleads guilty in Snowflake extortions — Krebs on Security</a></li>
+      <li><a href="https://datacentremagazine.com/news/why-is-coreweave-investing-in-india-with-a-240-mw-campus">Why is CoreWeave investing in India with a 240MW campus — Data Centre Magazine</a></li>
+      <li><a href="https://247wallst.com/investing/2026/10/13/coreweave-imploded-20-over-6-months-this-analyst-predicts-it-will-triple-in-price-over-the-coming-year/">Analyst predicts CoreWeave stock will triple — 24/7 Wall St</a></li>
+      <li><a href="https://nltimes.nl/2026/10/12/cloud-company-nebius-signs-first-client-new-major-data-center">Nebius signs first client for new major data center — NL Times</a></li>
+      <li><a href="https://nebius.com/newsroom">Nebius Newsroom</a></li>
+      <li><a href="https://techcrunch.com/2026/10/06/ai-computing-startup-lambda-to-raise-4b-ahead-of-planned-ipo/">Lambda closes $1B+ debt deal ahead of planned IPO — TechCrunch</a></li>
+      <li><a href="https://www.sdxcentral.com/news/lambda-poaches-aws-director-to-lead-software-and-ai-networking-engineering/">Lambda poaches AWS director to lead networking engineering — SDxCentral</a></li>
+      <li><a href="https://www.amd.com/en/solutions/data-center/insights/rack-scale-ai-and-the-promise-of-agentic-ai.html">Rack Scale AI and the Promise of Agentic AI — AMD</a></li>
+      <li><a href="https://ucapital.com/en/news/breaking/17626664">Nvidia-Cisco optical networking expansion; Microsoft Maia 300 coverage — uCapital</a></li>
+      <li><a href="https://nvidianews.nvidia.com/news/nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years">Nvidia commits $1 billion to advance US science — Nvidia</a></li>
+      <li><a href="https://finance.yahoo.com/technology/ai/articles/crusoe-discusses-potential-ipo-jpmorgan-143714977.html">Crusoe discusses potential IPO with JPMorgan — Yahoo Finance</a></li>
+      <li><a href="https://fortune.com/2026/10/04/nvidia-jensen-huang-ai-doomerism-foil-risk/">Nvidia's Jensen Huang on AI doomerism — Fortune</a></li>
+      <li><a href="https://fortune.com/2026/10/08/nvidia-ceo-jensen-huang-suffering-as-part-of-success-fear-of-failure-billionaire-tech-leader/">Jensen Huang on suffering as part of success — Fortune</a></li>
+      <li><a href="https://www.beri.net/article/ai-agent-accountability-act-hawley-murphy-cfaa-operator-liability-enterprise-agent-deployers">AI Agent Accountability Act: Hawley-Murphy CFAA operator liability — BERI</a></li>
+      <li><a href="https://www.mlex.com/mlex/dealrisk/articles/2524142/nvidia-s-reported-groq-scrutiny-could-sharpen-review-of-hugging-face-deal">Nvidia's reported Groq scrutiny could sharpen review of Hugging Face deal — MLex</a></li>
+      <li><a href="https://axios.com/2026/09/29/openai-sued-hugging-face-breach">OpenAI sued over Hugging Face breach — Axios</a></li>
+      <li><a href="https://together.ai/blog/together-link-frontier-quality-open-models-in-the-harness-you-already-use">Together Link: frontier-quality open models in the harness you already use — Together AI</a></li>
+      <li><a href="https://www.orrick.com/en/News/2026/08/OpenRouter-to-be-Acquired-by-Stripe-to-Help-Businesses-Optimize-Token-Routing-and-Usage">OpenRouter to be acquired by Stripe — Orrick</a></li>
+      <li><a href="https://www.intelligentcio.com/north-america/2026/07/31/fireworks-raises-us1-505-billion-series-d-as-enterprise-demand-for-specialised-ai-accelerates/">Fireworks raises $1.505B Series D — IntelligentCIO</a></li>
+      <li><a href="https://aiweekly.co/alerts/arcee-ai-raises-150m-series-b-at-1b-pre-money-says-it-trained-four-open-weight">Arcee AI raises $150M Series B at $1B pre-money — AI Weekly</a></li>
+      <li><a href="https://dealroom.co/news/151200-arcee-raises-150m-series-b-at-1b-valuation-to-chase-china-on-open-weight/">Arcee raises $150M Series B at $1B valuation — Dealroom</a></li>
+      <li><a href="https://aiweekly.co/alerts/chinas-cac-probes-deepseek-moonshot-over-claude-data-routing">China's CAC probes DeepSeek, Moonshot over Claude data routing — AI Weekly</a></li>
+      <li><a href="https://www.scmp.com/tech/tech-war/article/3361625/global-ai-experts-push-back-us-distillation-claims-against-moonshots-kimi-k3-model">Global AI experts push back on US distillation claims against Kimi K3 — South China Morning Post</a></li>
+      <li><a href="https://www.thestandard.com.hk/innovation/article/340989/Chinas-Moonshot-in-talks-with-Microsoft-Amazon-Google-over-K3-revenue-sharing-sources-say">China's Moonshot in talks with Microsoft, Amazon, Google over K3 revenue sharing — The Standard HK</a></li>
+      <li><a href="https://technode.com/2026/09/09/deepseek-citic-securities-shanghai-star-market-ipo/">DeepSeek, CITIC Securities, Shanghai STAR Market IPO — TechNode</a></li>
+      <li><a href="https://letsdatascience.com/news/alibaba-appoints-liu-dayiheng-to-lead-qwen-7fb39cf1">Alibaba appoints Liu Dayiheng to lead Qwen — Let's Data Science</a></li>
+      <li><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0826/2026082600680.pdf">MiniMax H1 2026 interim results filing — HKEX</a></li>
+      <li><a href="https://pulse2.com/general-intuition-raises-220-million-at-6-2-billion-valuation/">General Intuition raises $220M at $6.2B valuation — Pulse2</a></li>
+      <li><a href="https://valueaddvc.com/pulse/general-intuition-220m-6-2b-valuation-2026">General Intuition closes $220M round — ValueAdd VC</a></li>
+      <li><a href="https://tech.eu/2026/03/25/granola-raises-125m-at-1-5bn-valuation/">Granola raises $125M at $1.5B valuation — Tech.eu</a></li>
+      <li><a href="https://pulse2.com/granola-125-million-at-1-5-billion-valuation-raised-for-ai-meeting-context-platform/amp/">Granola raises $125M Series C — Pulse2</a></li>
+      <li><a href="https://pulse2.com/andreessen-horowitz-raises-1-1-billion-machine-age-fund-for-ai-infrastructure-chips-and-robotics/">a16z raises $1.1B Machine Age Fund — Pulse2</a></li>
+      <li><a href="https://www.thedailyupside.com/technology/artificial-intelligence/andreessen-horowitz-stakes-3b-on-bursting-the-ai-bubble-bet/">a16z stakes $3B on "bursting the AI bubble" bet — The Daily Upside</a></li>
+      <li><a href="https://www.pymnts.com/?p=3926838">OpenAI takes stake in Thrive Holdings — PYMNTS</a></li>
+      <li><a href="https://sharikatmubasher.com/news/article/21569752/aramcos-prosperity7-ventures-invests-in-velaura-ais-110mn-series-a-round">Aramco's Prosperity7 Ventures invests in Velaura AI's $110M Series A — Sharikat Mubasher</a></li>
+      <li><a href="https://pulse2.com/ai-fund-190-million-fund-ii-closed-to-co-found-ai-companies">AI Fund closes oversubscribed $190M Fund II (dated May 2025 — flagged as a stale recycle, not new Oct 2026 news) — Pulse2</a></li>
+    </ul>
+  </div>
+  <p class="note">Daily Intel is an internal prototype for Uniphore strategy use. Summaries are generated from public reporting and may compress or simplify source claims — verify figures before quoting externally. "AI Research" (frontier research scope beyond named labs) remains held open pending scope from Will. Kutu AI and Cognito AI Solutions remain tracked under CX &amp; Conversational AI competitors; both are confirmed real companies, though no dated news surfaced for either again this cycle, and searches for "Cognito AI Solutions" repeatedly surface an unrelated company called Cogito — a name-collision risk worth remembering, not a finding about either real company. Several figures and claims in this edition remain self-reported, press-sourced-but-unconfirmed, disputed, single-sourced, or independently unverified — including: Genesys's settlement mechanics (Bloomberg Law, filing/approval status not fully visible); the Microsoft/Anthropic "$17,600 bill" dispute (single-customer anecdote, underlying article not directly fetchable this cycle); Anthropic's reported ~$2 trillion IPO valuation target and banking syndicate (investor-expectation reporting, not company-confirmed); Altman's Vanity Fair "running for office" wording (secondary-sourced, exact wording unconfirmed) and his Politico podcast remarks (multi-source corroborated but partly paraphrased); Amodei's reported downplaying of the "rift" with Altman (secondary-sourced, unconfirmed against the original interview); Palantir's Goldman Sachs upgrade and price target (secondary aggregator-sourced, Goldman's own note not directly located) and its projected Nov 2 earnings date (third-party estimate); the Pentagon/Maven/Minab strike report (Bloomberg-relayed, predates this reporting window, disputed by Palantir); CoreWeave's "triple" stock prediction (one bullish outlier analyst, not consensus); Nebius's Rotterdam anchor-client LOI (construction not assured) and Lambda's backlog and Anthropic-commitment figures (investor-letter-sourced, not independently audited); the Nvidia-Cisco optical-networking item (exact date within this window unconfirmed); China's CAC narrowing its probe to DeepSeek and Moonshot, and Moonshot's reported cloud revenue-share talks (both single/secondary-sourced); Qwen 4's preview details and the Oct 15 Tongyi deadline (thin, non-English, or single-sourced); General Intuition's pre- vs. post-money valuation (secondary-sourced, disputed); the NEA/Granola attribution (now flagged as a likely misattribution pending direct verification); and the UK Parliament hearing's actual proceedings (held today, but outcome/transcript not yet reported as of this writing). CEO quotes are drawn from public reporting (interviews, podcasts, conference remarks, filings, and aggregated coverage) and should be verified against primary sources before external use.</p>
+</footer>
+
+</body>
+</html>
